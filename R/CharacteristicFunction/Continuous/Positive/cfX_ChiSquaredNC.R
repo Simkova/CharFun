@@ -24,7 +24,7 @@
 #'
 #' @export
 #'
-cfX_ChiSquared <- function(t, df, npc = 0) {
+cfX_ChiSquaredNC <- function(t, df, npc = 0) {
   szt <- dim(t)
   t <- c(t)
 
