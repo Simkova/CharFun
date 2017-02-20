@@ -23,7 +23,7 @@
 #' \url{https://en.wikipedia.org/wiki/Negative_binomial_distribution}
 #'
 #' @param t numerical values (number, vector...)
-#' @param n number of trials
+#' @param r number of trials
 #' @param p success probability, \eqn{0 \le p \le 1}, default value p = 1/2
 #' @param cfX function
 #'

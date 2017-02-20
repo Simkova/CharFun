@@ -37,7 +37,7 @@
 #'
 #' @export
 #'
-cfN_GeneralizedPoisson <- function(t, a, p, cfX) {
+cfN_GeneralizedPoisson <- function(t, a, p = 0.5, cfX) {
   szt <- dim(t)
   t <- c(t)
 

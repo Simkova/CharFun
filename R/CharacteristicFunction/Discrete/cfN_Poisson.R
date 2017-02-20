@@ -23,7 +23,7 @@
 #' \url{https://en.wikipedia.org/wiki/Compound_Poisson_distribution}
 #'
 #' @param t numerical values (number, vector...)
-#' @param lambda rate, lambda > 0
+#' @param lambda rate, lambda > 0, default value lambda = 1
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Poisson distribution with rate lambda
