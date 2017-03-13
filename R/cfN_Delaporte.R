@@ -27,11 +27,10 @@
 #' @param b variable mean, b > 0
 #' @param c fixed mean, c > 0
 #' @param cfX function
+#'
 #' @return characteristic function cf(t) of the Delaporte distribution with a and b variable means and c fixed mean
 #' @usage cfN_Delaporte(t, a, b, c, cfX)
 #' cfN_Delaporte(t, a, b, c)
-#'
-#' @example
 #'
 #' @export
 #'

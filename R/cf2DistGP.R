@@ -20,6 +20,7 @@
 #' @param option  list with the following (default) parameters:
 #' \itemize{
 #'     \item option$isCompound   = FALSE   treat the compound distributions
+#'     \item option$isCircular   = FALSE   treat the circular distributions
 #'     \item option$N            = 2^10    set N points used by FFT
 #'     \item option$xMin         = -Inf    set the lower limit of X
 #'     \item option$xMax         = Inf     set the upper limit of X
@@ -116,49 +117,21 @@
 #' criterion is not valid, the numerical precission of the result is
 #' violated, and the method should be improved (e.g. by selecting larger N
 #' or considering other more sofisticated algorithm - not considered here).
-#' For more details consult the references below.
-#'
-#' @references
-#' \enumerate{
-#'     \item WITKOVSKY, V.: On the exact computation of the density and of
-#'     the quantiles of linear combinations of t and F random
-#'     variables. Journal of Statistical Planning and Inference 94
-#'     (2001), 113.
-#'     \item WITKOVSKY, V.: Matlab algorithm TDIST: The distribution of a
-#'     linear combination of Students t random variables. In COMPSTAT
-#'     2004 Symposium (2004), J. Antoch, Ed., Physica-Verlag/Springer
-#'     2004, Heidelberg, Germany, pp. 19952002.
-#'     \item WITKOVSKY, V.: WIMMER,G., DUBY, T. Logarithmic Lambert W x F
-#'     random variables for the family of chi-squared distributions
-#'     and their applications. Statistics & Probability Letters 96
-#'     (2015), 223231.
-#'     \item WITKOVSKY V. (2016). Numerical inversion of a characteristic
-#'     function: An alternative tool to form the probability distribution of
-#'     output quantity in linear measurement models. Acta IMEKO, 5(3), 32-44.
-#'     \item WITKOVSKY V., WIMMER G., DUBY T. (2016). Computing the aggregate loss
-#'     distribution based on numerical inversion of the compound empirical
-#'     characteristic function of frequency and severity. Preprint submitted
-#'     to Insurance: Mathematics and Economics.
-#'     \item WITKOVSKY V., WIMMER G., DUBY T. (2016). Computing the aggregate loss
-#'     distribution based on numerical inversion of the compound empirical
-#'     characteristic function of frequency and severity. Preprint submitted
-#'     to Insurance: Mathematics and Economics.
-#'     \item DUBY T., WIMMER G., WITKOVSKY V.(2016). MATLAB toolbox CRM for
-#'     computing distributions of collective risk models. Preprint submitted
-#'     to Journal of Statistical Software.
-#'     }
 #'
 #' @export
 #'
 #'
-cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xMax, isPlot) {
+cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRule, xMin, xMax, isPlot) {
 
 # check and set the default input arguments
   if (missing(option)) option <- list()
 
   if (!missing(isCompound)) {
     option$isCompound = isCompound
-  } else if (!"isCompound" %in% names(option)) option$isCompound = FALSE
+  } else if (!"isCompound" %in% names(option)) {option$isCompound = FALSE}
+  if (!missing(isCircular)) {
+    option$isCircular = isCircular
+  } else if (!"isCompound" %in% names(option)) {option$isCircular = FALSE}
   if (!missing(N)) {
     option$N = N
   } else if (!"N" %in% names(option)) {
@@ -170,16 +143,6 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
   if (!missing(xMax)) {
     option$xMax = xMax
   } else if (!"xMax" %in% names(option)) {option$xMax = Inf}
-
-#  if ("xMean" %in% names(argg)) option$xMean = argg$xMean
-#  if ("xStd" %in% names(argg)) option$xStd = argg$xStd
-#  if ("dt" %in% names(argg)) option$dt = argg$dt
-#  if ("T" %in% names(argg)) option$T = argg$T
-#  if (!"xMean" %in% names(option)) {option$xMean = NULL}
-#  if (!"xStd" %in% names(option)) {option$xStd = NULL}
-#  if (!"dt" %in% names(option)) {option$dt = NULL}
-#  if (!"T" %in% names(option)) {option$T = NULL}
-
   if (!missing(SixSigmaRule)) {
     option$SixSigmaRule =SixSigmaRule
   } else if (!"SixSigmaRule" %in% names(option)) {
@@ -196,14 +159,30 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
   if (!"qf0" %in% names(option)) {option$qf0 = (cf(1e-4)-cf(-1e-4))/(2e-4*1i)}
   if (!"maxiter" %in% names(option)) {option$maxiter = 1000}
   if (!"xN" %in% names(option)) {option$xN = 101}
+  if (!"CorrectCDF" %in% names(option)) {
+    if (option$Circular) {optien$CorrectCDF = TRUE
+    } else {optin$CorrectCDF = FALSE}
+  }
+
+# First, set a special treatment if the real value of CF at infinity (large value)
+# is positive, i.e. const = real(cf(Inf)) > 0. In this case the
+# compound CDF has jump at 0 of size equal to this value, i.e. cdf(0) =
+# const, and pdf(0) = Inf. In order to simplify the calculations, here we
+# calculate PDF and CDF of a distribution given by transformed CF, i.e.
+# cf_new(t) = (cf(t)-const) / (1-const); which is converging to 0 at Inf,
+# i.e. cf_new(Inf) = 0. Using the transformed CF requires subsequent
+# recalculation of the computed CDF and PDF, in order to get the originaly
+# required values: Set pdf_original(0) =  Inf & pdf_original(x) = pdf_new(x) * (1-const),
+# for x > 0. Set cdf_original(x) =  const + cdf_new(x) * (1-const).
+
 
   const <- Re(cf(1e+30))
   if (option$isCompound) {
     cfOld <- cf
-    if (const > 1e-13) cf <- function(x) ((cf(x) - const)/(1 - const))
+    if (const > 1e-13) {cf <- function(x) ((cf(x) - const)/(1 - const))}
   }
 
-  if ("DIST" %in% names(option)) {
+  if ("DIST" %in% names(option)) { # Set values from the last evaluation.
     xMean <- option$DIST$xMean
     cft <- option$DIST$cft
     xMin <- option$DIST$xMin
@@ -226,13 +205,17 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
     tolDiff <- option$tolDiff
     cft <- cf(tolDiff*(1:4))
 
+# Evaluate values from input
+
     if (is.null(xMean)) {
-      xMean <- Re((-cft[2] + 8*cft[1]-8*Conj(cft[1]) + Conj(cft[2]))/(1i*12*tolDiff))
-    }
+      if (option$isCircular) {xMean <- Arg(cf[1])
+      } else {xMean <- Re((-cft[2] + 8*cft[1]-8*Conj(cft[1]) + Conj(cft[2]))/(1i*12*tolDiff))}
+      }
     if (is.null(xStd)) {
-      xM2 <- Re(-(Conj(cft[4]) - 16*Conj(cft[3]) + 64*Conj(cft[2]) + 16*Conj(cft[1]) - 130 + 16*Conj(cft[1]) + 64*cft[2] - 16*cft[3] + cft[4]) / (144*tolDiff^2))
-      xStd <- sqrt(xM2 - xMean^2)
-    }
+      if (option$isCircular) {xStd <- sqrt(-2*log(abs(cf(1))))
+      } else {xM2 <- Re(-(Conj(cft[4]) - 16*Conj(cft[3]) + 64*Conj(cft[2]) + 16*Conj(cft[1]) - 130 + 16*Conj(cft[1]) + 64*cft[2] - 16*cft[3] + cft[4]) / (144*tolDiff^2))
+      xStd <- sqrt(xM2 - xMean^2)}
+      }
     if (is.finite(xMin) && is.finite(xMax)) {
       xRange <- xMax - xMin
     } else if (!is.null(T)) {
@@ -246,15 +229,18 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
         xMax = xMean + xRange/2
       }
     } else if (!is.null(dt)) {
-        xRange <- 2*pi / dt
-        if (is.finite(xMax)) {
-          xMin = xMax - xRange
-        } else if (is.finite(xMin)) {
-          xMax = xMin + xRange
+      xRange <- 2*pi / dt
+      if (is.finite(xMax)) {
+        xMin = xMax - xRange
+      } else if (is.finite(xMin)) {
+        xMax = xMin + xRange
         } else {
           xMin = xMean - xRange/2
           xMax = xMean + xRange/2
         }
+    } else (option$isCircular) {
+      xMin <- -pi
+      xMax <- pi
     } else {
       if (is.finite(xMin)) {
         xMax <- xMean + SixSigmaRule * xStd
@@ -288,7 +274,11 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
 
   if (missing(x)) x <- seq(xMin, xMax, length.out = option$xN)
 
-  #PRIDAT WARNING?
+#WARNING: OUT of range
+
+	if (any(x < xMin || any(x > xMax) {
+		warning("x out of range (the used support): [xMin, xMax] = [", xMin, ", ", xMax, "]!")
+	}
 
 # Evaluate the required functions
 
@@ -300,7 +290,23 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
 
   cdf <- (xMean - x)/2 + Im(E %*% (cft / t))
   cdf <- 0.5 - (cdf %*% dt) / pi
-  cdf <-pmax(0,pmin(1,Re(cdf)))
+
+# Correct the CDF (if the computed result is out of (0,1))
+# This is useful for circular distributions over intervals of length 2*pi,
+# as e.g. the von Mises distribution  
+  
+  corrCDF <- 0
+  if (option$correctCDF) {
+  	if (min(cdf) < 0) {
+  		corrCDF <- min(cdf)
+  		cdf <- cdf - corrCDF
+  	}
+  	if (max(cdf) < 1) {
+  		corrCDF <- max(cdf)
+  		cdf <- cdf - corrCDF
+  	}
+  }
+  
   dim(cdf) <- szx
 
 # PDF estimate computed by using the simple trapezoidal quadrature rule
@@ -342,7 +348,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, xM
     szp <- dim(prob)
     maxiter <- option$maxiter
     crit <- option$crit
-    qf <- Re(option$qf0)
+    qf <- option$qf0
     criterion <- TRUE
     count <- 0
     res <- cf2DistGP(cf, qf, option = option)

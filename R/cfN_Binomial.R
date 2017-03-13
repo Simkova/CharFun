@@ -26,11 +26,10 @@
 #' @param n number of trials
 #' @param p success probability, \eqn{0 \le p \le 1}, default value p = 1/2
 #' @param cfX function
+#'
 #' @return characteristic function cf(t) of the Binomial distribution with n trials and p success probability
 #' @usage cfN_Binomial(t, n, p)
 #' cfN_Binomial(t, n, p, cfX)
-#'
-#' @example
 #'
 #' @export
 #'

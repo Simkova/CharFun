@@ -35,9 +35,6 @@ i.e. distribution of the random variable Y = X_1 + ... + X_N, where X_i ~ F_X
 are i.i.d. random variables with common CF cfX(t), and N ~ F_N is
 independent RV with its CF given by cfN(t).
 }
-\examples{
-
-}
 \seealso{
 For more details see WIKIPEDIA:
 \url{https://en.wikipedia.org/wiki/Binomial_distribution}
