@@ -21,6 +21,7 @@
 #' \itemize{
 #'     \item option$isCompound   = FALSE   treat the compound distributions
 #'     \item option$isCircular   = FALSE   treat the circular distributions
+#'     \item option$isInterp     = FALSE   create and use the interpolant functions for PDF/CDF/RND
 #'     \item option$N            = 2^10    set N points used by FFT
 #'     \item option$xMin         = -Inf    set the lower limit of X
 #'     \item option$xMax         = Inf     set the upper limit of X
@@ -160,9 +161,10 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
   if (!"maxiter" %in% names(option)) {option$maxiter = 1000}
   if (!"xN" %in% names(option)) {option$xN = 101}
   if (!"CorrectCDF" %in% names(option)) {
-    if (option$Circular) {optien$CorrectCDF = TRUE
+    if (option$isCircular) {optien$CorrectCDF = TRUE
     } else {optin$CorrectCDF = FALSE}
   }
+  if (!"isInterp" %in% names(option)) {option$isInterp = FALSE}
 
 # First, set a special treatment if the real value of CF at infinity (large value)
 # is positive, i.e. const = real(cf(Inf)) > 0. In this case the
@@ -276,14 +278,15 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 
 #WARNING: OUT of range
 
-	if (any(x < xMin || any(x > xMax) {
-		warning("x out of range (the used support): [xMin, xMax] = [", xMin, ", ", xMax, "]!")
+	if (any(x < xMin || any(x > xMax))) {
+		warning("CharFun: cf2DistGP" ,
+		        "x out of range (the used support): [xMin, xMax] = [", xMin, ", ", xMax, "]!")
 	}
 
 # Evaluate the required functions
 
   szx <- dim(x)
-  x <- c(x)
+  x <- c(x)1
   E <- exp((-1i)*x%*%t(t))
 
 # CDF estimate computed by using the simple trapezoidal quadrature rule
@@ -293,8 +296,8 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 
 # Correct the CDF (if the computed result is out of (0,1))
 # This is useful for circular distributions over intervals of length 2*pi,
-# as e.g. the von Mises distribution  
-  
+# as e.g. the von Mises distribution
+
   corrCDF <- 0
   if (option$correctCDF) {
   	if (min(cdf) < 0) {
@@ -306,14 +309,14 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
   		cdf <- cdf - corrCDF
   	}
   }
-  
+
   dim(cdf) <- szx
 
 # PDF estimate computed by using the simple trapezoidal quadrature rule
 
   pdf <- 0.5 + Re(E %*% cft)
   pdf <- (pdf %*% dt) / pi
-  pdf <- pmax(0, pdf)
+  pdf[pdf<0] <- 0
   dim(pdf) <- szx
   dim(x) <- szx
 
@@ -337,7 +340,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 # PrecisionCrit should be small for t > T, smaller than tolerance
 # options$crit
 
-  PrecisionCrit = abs(cft[length(cft)]/t[length(t)])
+  PrecisionCrit = abs(cft[length(cft)] / t[length(t)])
   isPrecisionOK = (PrecisionCrit <= option$crit)
 
 # QF evaluated by the Newton-Raphson iterative scheme
@@ -358,14 +361,15 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 
     while (criterion) {
       count <- count + 1
-      correction = (cdfQ - prob) / pdfQ
-      qf = pmax(xMin, qf - correction)
+      correction = (cdfQ - corrCDF - prob) / pdfQ
+      qf = pmax(xMin, pmin(xMax, qf - correction))
 
       res <- cf2DistGP(function(x) cf(x), x = qf, option = option)
       cdfQ <- res$cdf
       pdfQ <- res$pdf
 
-      criterion <- any(abs(correction) > crit * abs(qf)) && max(abs(correction)) > crit && count < maxiter
+      criterion <- any(abs(correction) > crit * abs(qf)) &&
+                        max(abs(correction)) > crit && count < maxiter
     }
 
     dim(qf) <- szp
@@ -377,6 +381,10 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
     count = c()
     correction = c()
     prob = c()
+  }
+
+  if (option$isInterrp){
+
   }
 
   result <- list(
@@ -411,14 +419,14 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 
   if (option$isPlot) {
     plot(x = x, y = pdf,
-         main="PDF Specified by the Characteristic Function CF",
+         main="PDF Specified by the Characteristic Function",
          xlab="x",
          ylab="pdf",
          type="l",
          col="blue")
 
     plot(x = x, y = cdf,
-         main="CDF Specified by the Characteristic Function CF",
+         main="CDF Specified by the Characteristic Function",
          xlab="x",
          ylab="cdf",
          type="l",
