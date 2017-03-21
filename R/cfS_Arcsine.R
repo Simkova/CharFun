@@ -26,7 +26,7 @@ cfS_Arcsine <- function(t) {
   szt <- dim(t)
   t <- c(t)
 
-  cf <- besselJ(abs(t), 0)
+  cf <- BesselJ(t, 0)
   cf[t == 0] <- 1
 
   dim(cf) <- szt

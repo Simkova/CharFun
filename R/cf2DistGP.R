@@ -178,7 +178,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 # for x > 0. Set cdf_original(x) =  const + cdf_new(x) * (1-const).
 
 
-  const <- Re(cf(1e+30))
+  const <- try(abs(Re(cf(1e+30))))
   if (option$isCompound) {
     cfOld <- cf
     if (const > 1e-13) {cf <- function(x) ((cf(x) - const)/(1 - const))}
