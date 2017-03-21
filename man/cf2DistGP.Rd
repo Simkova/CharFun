@@ -18,6 +18,8 @@ cf2DistFFT automatically selects vector x from the domain}
 \item{option}{list with the following (default) parameters:
 \itemize{
     \item option$isCompound   = FALSE   treat the compound distributions
+    \item option$isCircular   = FALSE   treat the circular distributions
+    \item option$isInterp     = FALSE   create and use the interpolant functions for PDF/CDF/RND
     \item option$N            = 2^10    set N points used by FFT
     \item option$xMin         = -Inf    set the lower limit of X
     \item option$xMax         = Inf     set the upper limit of X
@@ -124,37 +126,6 @@ for pre-selected small tolerance value, say tol = 10^-8. If this
 criterion is not valid, the numerical precission of the result is
 violated, and the method should be improved (e.g. by selecting larger N
 or considering other more sofisticated algorithm - not considered here).
-For more details consult the references below.
-}
-\references{
-\enumerate{
-    \item WITKOVSKY, V.: On the exact computation of the density and of
-    the quantiles of linear combinations of t and F random
-    variables. Journal of Statistical Planning and Inference 94
-    (2001), 113.
-    \item WITKOVSKY, V.: Matlab algorithm TDIST: The distribution of a
-    linear combination of Students t random variables. In COMPSTAT
-    2004 Symposium (2004), J. Antoch, Ed., Physica-Verlag/Springer
-    2004, Heidelberg, Germany, pp. 19952002.
-    \item WITKOVSKY, V.: WIMMER,G., DUBY, T. Logarithmic Lambert W x F
-    random variables for the family of chi-squared distributions
-    and their applications. Statistics & Probability Letters 96
-    (2015), 223231.
-    \item WITKOVSKY V. (2016). Numerical inversion of a characteristic
-    function: An alternative tool to form the probability distribution of
-    output quantity in linear measurement models. Acta IMEKO, 5(3), 32-44.
-    \item WITKOVSKY V., WIMMER G., DUBY T. (2016). Computing the aggregate loss
-    distribution based on numerical inversion of the compound empirical
-    characteristic function of frequency and severity. Preprint submitted
-    to Insurance: Mathematics and Economics.
-    \item WITKOVSKY V., WIMMER G., DUBY T. (2016). Computing the aggregate loss
-    distribution based on numerical inversion of the compound empirical
-    characteristic function of frequency and severity. Preprint submitted
-    to Insurance: Mathematics and Economics.
-    \item DUBY T., WIMMER G., WITKOVSKY V.(2016). MATLAB toolbox CRM for
-    computing distributions of collective risk models. Preprint submitted
-    to Journal of Statistical Software.
-    }
 }
 \seealso{
 

@@ -12,11 +12,11 @@ plotGraf(f, x, xmin, xmax, dx = 0.1, px = 0, py = 0, labelx = TRUE,
 
 \item{x}{numerical values (number or vector)}
 
-\item{xmin}{number}
+\item{xmin}{number, default value xmin = -1}
 
-\item{xmax}{number}
+\item{xmax}{number, default value xmax = 1}
 
-\item{dx}{positive number}
+\item{dx}{positive number, default value dx = 0.1}
 
 \item{px}{numerical values (number or vector) in which are auxiliary line on axis x render default value \eqn{px = 0}}
 
@@ -27,7 +27,7 @@ plotGraf(f, x, xmin, xmax, dx = 0.1, px = 0, py = 0, labelx = TRUE,
 \item{labely}{rendering auxiliary line default value TRUE}
 }
 \description{
-Graf\eqn{(f, x, xmin, xmax)} plots graf of complex function \eqn{f} in arguments \eqn{x} or in range [xmin, xmax] with step dx
+plotGraf(f, x, xmin, xmax) plots graf of complex function f in real arguments x or in range [xmin, xmax] with step dx
 }
 \details{
 function with optional parameters must be pass as lambda function f = function(x) f(x, optional parameters)

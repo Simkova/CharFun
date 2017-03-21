@@ -236,22 +236,24 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
         xMin = xMax - xRange
       } else if (is.finite(xMin)) {
         xMax = xMin + xRange
-        } else {
+      } else {
           xMin = xMean - xRange/2
           xMax = xMean + xRange/2
-        }
-    } else (option$isCircular) {
-      xMin <- -pi
-      xMax <- pi
-    } else {
-      if (is.finite(xMin)) {
-        xMax <- xMean + SixSigmaRule * xStd
-      } else if (is.finite(xMax)) {
-        xMin <- xMean - SixSigmaRule * xStd
-      } else {
-        xMin <- xMean - SixSigmaRule * xStd
-        xMax <- xMean + SixSigmaRule * xStd
       }
+    } else {
+        if (option$isCircular) {
+          xMin <- -pi
+          xMax <- pi
+        } else {
+            if (is.finite(xMin)) {
+              xMax <- xMean + SixSigmaRule * xStd
+            } else if (is.finite(xMax)) {
+              xMin <- xMean - SixSigmaRule * xStd
+            } else {
+              xMin <- xMean - SixSigmaRule * xStd
+              xMax <- xMean + SixSigmaRule * xStd
+            }
+        }
       xRange <- xMax - xMin
     }
 
@@ -286,7 +288,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 # Evaluate the required functions
 
   szx <- dim(x)
-  x <- c(x)1
+  x <- c(x)
   E <- exp((-1i)*x%*%t(t))
 
 # CDF estimate computed by using the simple trapezoidal quadrature rule
