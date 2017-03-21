@@ -132,7 +132,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
   } else if (!"isCompound" %in% names(option)) {option$isCompound = FALSE}
   if (!missing(isCircular)) {
     option$isCircular = isCircular
-  } else if (!"isCompound" %in% names(option)) {option$isCircular = FALSE}
+  } else if (!"isCircular" %in% names(option)) {option$isCircular = FALSE}
   if (!missing(N)) {
     option$N = N
   } else if (!"N" %in% names(option)) {
@@ -162,7 +162,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
   if (!"xN" %in% names(option)) {option$xN = 101}
   if (!"CorrectCDF" %in% names(option)) {
     if (option$isCircular) {optien$CorrectCDF = TRUE
-    } else {optin$CorrectCDF = FALSE}
+    } else {option$CorrectCDF = FALSE}
   }
   if (!"isInterp" %in% names(option)) {option$isInterp = FALSE}
 
@@ -301,7 +301,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 # as e.g. the von Mises distribution
 
   corrCDF <- 0
-  if (option$correctCDF) {
+  if (option$CorrectCDF) {
   	if (min(cdf) < 0) {
   		corrCDF <- min(cdf)
   		cdf <- cdf - corrCDF
@@ -383,10 +383,6 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
     count = c()
     correction = c()
     prob = c()
-  }
-
-  if (option$isInterrp){
-
   }
 
   result <- list(
