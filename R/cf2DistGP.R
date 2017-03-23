@@ -157,7 +157,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 
 # Other options parameters
 
-  if (!"qf0" %in% names(option)) {option$qf0 = (cf(1e-4)-cf(-1e-4))/(2e-4*1i)}
+  if (!"qf0" %in% names(option)) {option$qf0 = Re((cf(1e-4)-cf(-1e-4))/(2e-4*1i))}
   if (!"maxiter" %in% names(option)) {option$maxiter = 1000}
   if (!"xN" %in% names(option)) {option$xN = 101}
   if (!"CorrectCDF" %in% names(option)) {
@@ -181,7 +181,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
   const <- abs(Re(cf(1e+30)))
   if (option$isCompound) {
     cfOld <- cf
-    if (const > 1e-13) {cf <- function(x) ((cf(x) - const)/(1 - const))}
+    if (const > 1e-13) {cf <- function(x) ((cfOld(x) - const)/(1 - const))}
   }
 
   if ("DIST" %in% names(option)) { # Set values from the last evaluation.
@@ -276,7 +276,7 @@ cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRu
 
 # ALGORITHM ---------------------------------------------------------------
 
-  if (missing(x)) x <- seq(xMin, xMax, length.out = option$xN)
+  if (missing(x)) {x <- seq(xMin, xMax, length.out = option$xN)}
 
 #WARNING: OUT of range
 
