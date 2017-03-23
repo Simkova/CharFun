@@ -26,7 +26,7 @@ cfS_Arcsine <- function(t) {
   szt <- dim(t)
   t <- c(t)
 
-  cf <- unlist(lapply(t, function(t) tryCatch(BesselJ(t, 0),error = function(e) NA)))
+  cf <- unlist(lapply(t, function(t) tryCatch(BesselJ(t, 0), error = function(e) NA)))
   cf[t == 0] <- 1
   cf[]
 
