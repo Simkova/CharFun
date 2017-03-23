@@ -308,6 +308,8 @@ cf2DistFFT <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, x
   PrecisionCrit = abs(cft[length(cft)]/t[length(t)])
   isPrecisionOK = (PrecisionCrit<=option$crit)
 
+# INTERPOLATE QUANTILE FUNCTION for required prob values: QF(prob)
+
   if (missing(prob)) prob = c(0.9,0.95,0.975,0.99,0.995,0.999)
 
   cdfu <- unique(cdfFFT)
@@ -323,9 +325,10 @@ cf2DistFFT <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, x
   cdfuxxU <- cdfuxxU[, order(cdfuxxU[1, ], cdfuxxU[2, ])]
 
   qfFun <- function(prob)
-    pchip(xi =  (cdfuxxU[1,]),
-          yi =  c(cdfuxxU[2,]) + dx / 2,
-          x =  prob)
+    interpBarycentric(x =  (cdfuxxU[1,]),
+                      fun = c(cdfuxxU[2,]) + dx / 2,
+                      xNew = prob,
+                      isChebPts = FALSE)
   qf        <- qfFun(prob)
   dim(qf)   <- szp
   dim(prob) <- szp
@@ -343,8 +346,6 @@ cf2DistFFT <- function(cf, x, prob, option, isCompound, N, SixSigmaRule, xMin, x
 # TRY INTERPOLATE PDF required values: PDF(x)
 
   pdfFun = function(x) approx(xFFT,pdfFFT,x);
-
-  pdf <- try(matrix(unlist(pdfFun(x)), nrow = 2, byrow = TRUE)[2,])*seq(from = 1,to = 1,length.out = length(x))
   pdf <-
     tryCatch(
       expr = matrix(unlist(pdfFun(x)), nrow = 2, byrow = TRUE)[2, ]
