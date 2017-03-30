@@ -31,8 +31,8 @@ cfX_Beta <- function(t, alpha = 1, beta = 1) {
      szt <- dim(t)
      t <- c(t)
 
-     cf <- kummerM(1i*t, alpha, alpha + beta)
-     cf[abs(cf) > 1] <- 1
+     cf <- hypergeom1F1(1i*t, alpha, alpha + beta)
+
 
      cf[t == 0] <- 1
 
