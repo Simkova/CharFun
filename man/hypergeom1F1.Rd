@@ -2,14 +2,38 @@
 % Please edit documentation in R/hypergeom1F1.R
 \name{hypergeom1F1}
 \alias{hypergeom1F1}
-\title{Title}
+\title{Confluent hypergeometric function}
 \usage{
-hypergeom1F1(z, a, b)
+hypergeom1F1(t, a, b)
 }
 \arguments{
-\item{b}{}
+\item{z}{numerical values (number, vector...)}
+
+\item{a}{single value}
+
+\item{b}{single value}
+}
+\value{
+hypergeometric function 1F1(a,b,z)
 }
 \description{
-Title
+HYPERGEOM1F1 Computes the confluent hypergeometric function 1F1(a,b,z),
+also known as the Kummer function M(a,b,z), for the real parameters a
+and b (here assumed to be scalars), and the complex argument z
+(could be scalar, vector or array).
+}
+\details{
+The algorithm is based on a Fortran program in S. Zhang & J. Jin
+"Computation of Special Functions" (Wiley, 1996).
+Converted to matlab by using f2matlab:
+\url{https://sourceforge.net/projects/f2matlab/}
+written by Ben Barrowes (\email{barrowes@alum.mit.edu}).
+}
+\examples{
+
+}
+\seealso{
+For more details see WIKIPEDIA:
+\url{https://en.wikipedia.org/wiki/Confluent_hypergeometric_function}
 }
 
