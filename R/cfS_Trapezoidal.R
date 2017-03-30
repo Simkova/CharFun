@@ -11,7 +11,7 @@
 #' @family Symetric Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:
-#' \url{https://en.wikipedia.org/wiki/Normal_distribution}
+#' \url{https://en.wikipedia.org/wiki/Trapezoidal_distribution}
 #'
 #' @param t numerical values (number, vector...)
 #' @param a number, a > 0, default value a = 1

@@ -21,26 +21,20 @@ the Triangular distribution on the interval (-a, a) with mode 0
 cfS_Triangula(t, a) = (2 - 2cos(at)) / (a^2 * t^2)
 }
 \examples{
-## EXAMPLE1 (CF of the Logarithmic distribution with the parameter p = 0.5)
- p <- 0.5
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p), t, title = "CF of the Logarithmic distribution with the parameter p = 0.5")
+## EXAMPLE1 (CF of the symmetric Triangular distribution on (-2 , 2))
+t <- seq(-10, 10, length.out = 501)
+plotGraf(function(t) cfS_Triangular(t, 2), t, title = "CF of the symmetric Triangular distribution on (-2 , 2)")
 
-#' ## EXAMPLE2 (CF of the compound Logarithmic-Exponential distributionn)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p, cfX), t, title = "CF of the compound Logarithmic-Exponential distribution")
+## EXAMPLE2 (PDF/CDF of the symmetric Triangular distribution on (-3 , 3))
+cf <- function(t) cfS_Triangular(t, 3)
+x <- seq(-3, 3, length.out = 101)
+prob <- c(0.9, 0.95, 0.99)
+xRange <- 6
+option <- list()
+option$N <- 2^10
+option$dx <- 2/pi/xRange
+result <- cf2DistGP(cf, x, option = option)
 
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- cf <- function(t) cfN_Logarithmic(t, p, cfX)
- x <- seq(0, 3, length.out = 101)
- prob <- c(0.9, 0.95, 0.99)
- result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
 }
 \seealso{
 For more details see WIKIPEDIA:

@@ -54,7 +54,7 @@ cfX <- function(t) cfX_Exponential(t, lambda)
 t <- seq(-50, 50, length.out = 501)
 plotGraf(function(t) cfN_PolyaEggenberger(t, a, b, m, cfX), t, title = "CF of the compound Polya-Eggenberger-Exponential distribution")
 
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
+## EXAMPLE3 (PDF/CDF of the compound Polya-Eggenberger-Exponential distribution)
 a <- 2.2
 b <- 3.3
 m <- 4
