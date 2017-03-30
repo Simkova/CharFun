@@ -4,19 +4,25 @@
 \alias{plotGraf}
 \title{Plot Graf f(x)}
 \usage{
-plotGraf(f, x, xmin, xmax, dx = 0.1, px = 0, py = 0, labelx = TRUE,
-  labely = TRUE)
+plotGraf(f, x, title, xmin, xmax, dx = 0.1, xlab, ylab, px = 0, py = 0,
+  labelx = TRUE, labely = TRUE)
 }
 \arguments{
 \item{f}{function}
 
 \item{x}{numerical values (number or vector)}
 
+\item{title}{an overall title for the plot}
+
 \item{xmin}{number, default value xmin = -1}
 
 \item{xmax}{number, default value xmax = 1}
 
 \item{dx}{positive number, default value dx = 0.1}
+
+\item{xlab}{a title for the x axis: see \link[graphics]{title}.}
+
+\item{ylab}{a title for the y axis: see \link[graphics]{title}.}
 
 \item{px}{numerical values (number or vector) in which are auxiliary line on axis x render default value \eqn{px = 0}}
 
