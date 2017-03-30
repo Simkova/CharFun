@@ -30,7 +30,7 @@
 #' @usage cfN_Logarithmic(t, p)
 #' cfN_Logarithmic(t, p, cfX)
 #'
-#' @example
+#' @example Examples/example_cfN_Logarithmic.R
 #'
 #' @export
 #'

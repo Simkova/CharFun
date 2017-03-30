@@ -31,9 +31,11 @@
 #' @usage cfN_NegativeBinomial(t, n, p)
 #' cfN_NegativeBinomial(t, n, p, cfX)
 #'
-#' @example
+#' @example Examples/example_cfN_NegativeBinomial.R
 #'
 #' @export
+#'
+#'
 #'
 cfN_NegativeBinomial <- function(t, r = 10, p = 0.5, cfX) {
   szt <- dim(t)

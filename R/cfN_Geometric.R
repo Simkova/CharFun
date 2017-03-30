@@ -42,10 +42,10 @@
 #' @usage cfN_Geometric(t, p, type)
 #' cfN_Geometric(t, p, type, cfX)
 #'
-#' @example
+#' @example Examples/example_cfN_Geometric.R
 #'
 #' @export
-#'
+
 cfN_Geometric <- function(t, p = 1/2, type = "standard", cfX) {
   szt <- dim(t)
   t <- c(t)

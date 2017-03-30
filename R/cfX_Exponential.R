@@ -18,10 +18,9 @@
 #' @return characteristic function cf(t) of the Exponential distribution
 #' @usage cfX_Exponential(t, lambda)
 #'
-#' @example
+#' @example Examples/example_cfX_Exponential.R
 #'
 #' @export
-
 
 cfX_Exponential <- function(t, lambda = 1) {
   szt <- dim(t)

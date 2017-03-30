@@ -32,7 +32,7 @@
 #' @usage cfN_PolyaEggenberger(t, a, b, m)
 #' cfN_PolyaEggenberger(t, a, b, m, cfX)
 #'
-#' @example
+#' @example Examples/example_cfN_PolyaEggenberger.R
 #'
 #' @export
 #'

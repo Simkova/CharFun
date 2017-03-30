@@ -20,7 +20,7 @@
 #' @return characteristic function cf(t) of the CHI-SUQARED distribution
 #' @usage cfX_ChiSquared(t, df, npc)
 #'
-#' @example
+#' @example Examples/example_cfX_ChiSquared.R
 #'
 #' @export
 #'

@@ -33,10 +33,10 @@
 #' @usage cfN_GeneralizedPoisson(t, a, p)
 #' cfN_GeneralizedPoisson(t, a, p, cfX)
 #'
-#' @example
+#' @example Examples/example_cfN_GeneralizedPoisson.R
 #'
 #' @export
-#'
+
 cfN_GeneralizedPoisson <- function(t, a, p = 0.5, cfX) {
   szt <- dim(t)
   t <- c(t)

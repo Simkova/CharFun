@@ -18,7 +18,7 @@
 #' @return characteristic function cf(t) of the normal distribution N(0, 1)
 #' @usage cfS_Gaussian(t)
 #'
-#' @example
+#' @example Examples/example_cfS_Gaussian.R
 #'
 #' @export
 #'

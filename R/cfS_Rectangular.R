@@ -18,7 +18,7 @@
 #' @return characteristic function cf(t) of the Rectangular distribution on the interval (-a, a)
 #' @usage cfX_Rectangular(t, a)
 #'
-#' @example
+#' @example Examples/example_cfS_Rectangular.R
 #'
 #' @export
 #'

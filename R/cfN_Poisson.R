@@ -30,7 +30,7 @@
 #' @usage cfN_Poisson(t, lambda)
 #' cfN_Poisson(t, lambda, cfX)
 #'
-#' @example
+#' @example Examples/example_cfN_Poisson.R
 #'
 #' @export
 #'

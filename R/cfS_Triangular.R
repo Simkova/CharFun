@@ -18,11 +18,10 @@
 #' @return characteristic function cf(t) of the Triangular distribution on the interval (-a, a) with mode 0
 #' @usage cfX_Triangular(t, a)
 #'
-#' @example
-#'
+#' @example Examples/example_cfS_Triangular.R
 #'
 #' @export
-#'
+
 cfS_Triangular <- function(t, a = 1) {
   szt <- dim(t)
   t <- c(t)

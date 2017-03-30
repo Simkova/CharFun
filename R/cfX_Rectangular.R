@@ -18,11 +18,10 @@
 #' @return characteristic function cf(t) of the Rectangular distribution on the interval (a, b)
 #' @usage cfX_Rectangular(t, a, b)
 #'
-#' @example
-#'
+#' @example Examples/example_cfX_Rectangular.R
 #'
 #' @export
-#'
+
 cfX_Rectangular <- function(t, a = -1, b = 1) {
   szt <- dim(t)
   t <- c(t)

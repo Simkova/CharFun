@@ -19,7 +19,7 @@
 #' @return characteristic function cf(t) of the Inverse Gamma distribution
 #' @usage cfX_InverseGamma(t, alpha, beta)
 #'
-#' @example
+#' @example Examples/example_cfX_InverseGamma.R
 #'
 #' @export
 #'

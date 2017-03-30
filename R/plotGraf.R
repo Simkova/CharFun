@@ -5,9 +5,12 @@
 #'
 #' @param f function
 #' @param x numerical values (number or vector)
+#' @param title an overall title for the plot
 #' @param xmin number, default value xmin = -1
 #' @param xmax number, default value xmax = 1
 #' @param dx positive number, default value dx = 0.1
+#' @param xlab a title for the x axis: see \link[graphics]{title}.
+#' @param ylab a title for the y axis: see \link[graphics]{title}.
 #' @param px numerical values (number or vector) in which are auxiliary line on axis x render default value \eqn{px = 0}
 #' @param py numerical values (number or vector) in which are auxiliary line on axis y render default value \eqn{py = 0}
 #' @param labelx rendering auxiliary line default value TRUE
@@ -20,7 +23,7 @@
 #' @returng Graf of function f in argument x or in range [xmin, xmax] with step dx
 #' @export
 
-plotGraf <- function(f, x, xmin, xmax, dx = 0.1, px = 0, py = 0, labelx = TRUE, labely = TRUE) {
+plotGraf <- function(f, x, title, xmin, xmax, dx = 0.1, xlab, ylab, px = 0, py = 0, labelx = TRUE, labely = TRUE) {
 
   if (missing(x)) {
     if (missing(xmin) && missing(xmax)) {
@@ -38,13 +41,17 @@ plotGraf <- function(f, x, xmin, xmax, dx = 0.1, px = 0, py = 0, labelx = TRUE, 
     x <- x[x >= xmin && x <= xmax]
   }
 
+  if (missing(title)) {title <- "Function F(x)"}
+  if (missing(xlab)) {xlab <- "x"}
+  if (missing(ylab)) {ylab <- "f(x)"}
+
   real = Re(f(x))
   imag = Im(f(x))
 
   plot(x,real,
-       main = "Function f(x)",
-       xlab = "x",
-       ylab = "f(x)",
+       main = title,
+       xlab = xlab,
+       ylab = ylab,
        type = "l",
        col = "blue",
        xlim = c(xmin, xmax),

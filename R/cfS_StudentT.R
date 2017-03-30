@@ -21,6 +21,9 @@
 #' @note bessel function nefunguje dobre
 #'
 #' @return characteristic function cf(t) of the Student's t-distribution
+#'
+#' @example Examples/example_cfS_StudentT.R
+#'
 #' @export
 #'
 cfS_StudentT <- function(t, df) {

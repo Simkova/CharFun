@@ -17,7 +17,7 @@
 #' @return characteristic function cf(t) of the normal distribution
 #' @usage cfX_Normal(t, mean, variance)
 #'
-#' @example
+#' @example Examples/example_cfX_Normal.R
 #'
 #' @export
 #'

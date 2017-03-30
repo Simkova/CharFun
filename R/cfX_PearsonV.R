@@ -21,7 +21,7 @@
 #' @return characteristic function cf(t) of the Gamma distribution
 #' @usage cfX_PearsonV(t, alpha, beta)
 #'
-#' @example
+#' @example Examples/example_cfX_PearsonV.R
 #'
 #' @export
 #'

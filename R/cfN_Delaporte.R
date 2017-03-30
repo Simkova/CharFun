@@ -32,8 +32,13 @@
 #' @usage cfN_Delaporte(t, a, b, c, cfX)
 #' cfN_Delaporte(t, a, b, c)
 #'
+#' @example Examples/example_cfN_Delaporte.R
+#'
 #' @export
 #'
+#'
+
+
 cfN_Delaporte <- function(t, a, b, c, cfX) {
   szt <- dim(t)
   t <- c(t)
