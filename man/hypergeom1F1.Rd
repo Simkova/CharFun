@@ -30,7 +30,11 @@ Converted to matlab by using f2matlab:
 written by Ben Barrowes (\email{barrowes@alum.mit.edu}).
 }
 \examples{
-
+## EXAMPLE1 (CF of Beta(1/2,1/2) distribution)
+ a  = 1/2
+ b  = 1/2
+ t  = seq(-50, 50, length.out = 2^11)
+ plotGraf(function(t) hypergeom1F1(1i*t, a, b+b), t, title = "CF of the Beta distribution with alpha = 1/2, beta = 1/2")
 }
 \seealso{
 For more details see WIKIPEDIA:

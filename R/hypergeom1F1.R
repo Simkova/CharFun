@@ -27,7 +27,7 @@
 #'
 #' @export
 #'
-#' @example
+#' @example Examples/example_hypergeom1F1.R
 #'
 hypergeom1F1 <- function(z, a, b) {
   sz <- dim(z)

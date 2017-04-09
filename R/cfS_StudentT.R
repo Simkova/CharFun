@@ -30,7 +30,7 @@ cfS_StudentT <- function(t, df) {
   szt <- dim(t)
   t <- c(t)
 
-  cf <- unlist(lapply(t, function(t) tryCatch(BesselK(abs(t)*sqrt(df), df/2, TRUE), error = function(e) NA, message("Error in Bessel function: nu must be integer."))))
+  cf <- unlist(lapply(t, function(t) tryCatch(BesselK(abs(t)*sqrt(df), df/2, TRUE), error = function(e) NA)))
   cf <- exp(-abs(t)*sqrt(df)) * (sqrt(df)*abs(t))^(df/2) / 2^(df/2-1)/gamma(df/2) * cf
   cf[t == 0] <- 1
 

@@ -122,315 +122,431 @@
 #' @export
 #'
 #'
-cf2DistGP <- function(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRule, xMin, xMax, isPlot) {
+cf2DistGP <-
+  function(cf,
+           x,
+           prob,
+           option,
+           isCompound,
+           isCircular,
+           N,
+           SixSigmaRule,
+           xMin,
+           xMax,
+           isPlot) {
+    # check and set the default input arguments
+    if (missing(option)) {
+      option <- list()
+    }
 
-# check and set the default input arguments
-  if (missing(option)) option <- list()
-
-  if (!missing(isCompound)) {
-    option$isCompound = isCompound
-  } else if (!"isCompound" %in% names(option)) {option$isCompound = FALSE}
-  if (!missing(isCircular)) {
-    option$isCircular = isCircular
-  } else if (!"isCircular" %in% names(option)) {option$isCircular = FALSE}
-  if (!missing(N)) {
-    option$N = N
-  } else if (!"N" %in% names(option)) {
-    if (option$isCompound) option$N = 2^14 else option$N = 2^10}
-  if (!missing(xMin)) {
-    option$xMin = xMin
-  } else if (!"xMin" %in% names(option)) {
-    if (option$isCompound) option$xMin = 0 else option$xMin = -Inf}
-  if (!missing(xMax)) {
-    option$xMax = xMax
-  } else if (!"xMax" %in% names(option)) {option$xMax = Inf}
-  if (!missing(SixSigmaRule)) {
-    option$SixSigmaRule =SixSigmaRule
-  } else if (!"SixSigmaRule" %in% names(option)) {
-    if (option$isCompound) option$SixSigmaRule = 10 else option$SixSigmaRule = 6}
-
-  if (!"tolDiff" %in% names(option)) {option$tolDiff = 1e-04}
-  if (!"crit" %in% names(option)) {option$crit = 1e-12}
-  if (!missing(isPlot)) {
-    option$isPlot = isPlot
-  } else if (!"isPlot" %in% names(option)) {option$isPlot = TRUE}
-
-# Other options parameters
-
-  if (!"qf0" %in% names(option)) {option$qf0 = Re((cf(1e-4)-cf(-1e-4))/(2e-4*1i))}
-  if (!"maxiter" %in% names(option)) {option$maxiter = 1000}
-  if (!"xN" %in% names(option)) {option$xN = 101}
-  if (!"CorrectCDF" %in% names(option)) {
-    if (option$isCircular) {optien$CorrectCDF = TRUE
-    } else {option$CorrectCDF = FALSE}
-  }
-  if (!"isInterp" %in% names(option)) {option$isInterp = FALSE}
-
-# First, set a special treatment if the real value of CF at infinity (large value)
-# is positive, i.e. const = real(cf(Inf)) > 0. In this case the
-# compound CDF has jump at 0 of size equal to this value, i.e. cdf(0) =
-# const, and pdf(0) = Inf. In order to simplify the calculations, here we
-# calculate PDF and CDF of a distribution given by transformed CF, i.e.
-# cf_new(t) = (cf(t)-const) / (1-const); which is converging to 0 at Inf,
-# i.e. cf_new(Inf) = 0. Using the transformed CF requires subsequent
-# recalculation of the computed CDF and PDF, in order to get the originaly
-# required values: Set pdf_original(0) =  Inf & pdf_original(x) = pdf_new(x) * (1-const),
-# for x > 0. Set cdf_original(x) =  const + cdf_new(x) * (1-const).
-
-
-  const <- abs(Re(cf(1e+30)))
-  if (option$isCompound) {
-    cfOld <- cf
-    if (const > 1e-13) {cf <- function(x) ((cfOld(x) - const)/(1 - const))}
-  }
-
-  if ("DIST" %in% names(option)) { # Set values from the last evaluation.
-    xMean <- option$DIST$xMean
-    cft <- option$DIST$cft
-    xMin <- option$DIST$xMin
-    xMax <- option$DIST$xMax
-    N <- option$DIST$N
-    k <- option$DIST$k
-    xRange <- option$DIST$xRange
-    dt <- option$DIST$dt
-    t <- option$DIST$t
-    xStd <- NaN
-  } else {
-    N <- 2*option$N
-    dt <- option$dt
-    T <- option$T
-    xMin <- option$xMin
-    xMax <- option$xMax
-    xMean <- option$xMean
-    xStd <- option$xStd
-    SixSigmaRule <- option$SixSigmaRule
-    tolDiff <- option$tolDiff
-    cft <- cf(tolDiff*(1:4))
-
-# Evaluate values from input
-
-    if (is.null(xMean)) {
-      if (option$isCircular) {xMean <- Arg(cf[1])
-      } else {xMean <- Re((-cft[2] + 8*cft[1]-8*Conj(cft[1]) + Conj(cft[2]))/(1i*12*tolDiff))}
+    if (!missing(isCompound)) {
+      option$isCompound = isCompound
+    } else if (!"isCompound" %in% names(option)) {
+      option$isCompound = FALSE
+    }
+    if (!missing(isCircular)) {
+      option$isCircular = isCircular
+    } else if (!"isCircular" %in% names(option)) {
+      option$isCircular = FALSE
+    }
+    if (!missing(N)) {
+      option$N = N
+    } else if (!"N" %in% names(option)) {
+      if (option$isCompound) {
+        option$N = 2 ^ 14
+      }  else {
+          option$N = 2 ^ 10
       }
-    if (is.null(xStd)) {
-      if (option$isCircular) {xStd <- sqrt(-2*log(abs(cf(1))))
-      } else {xM2 <- Re(-(Conj(cft[4]) - 16*Conj(cft[3]) + 64*Conj(cft[2]) + 16*Conj(cft[1]) - 130 + 16*Conj(cft[1]) + 64*cft[2] - 16*cft[3] + cft[4]) / (144*tolDiff^2))
-      xStd <- sqrt(xM2 - xMean^2)}
+    }
+    if (!missing(xMin)) {
+      option$xMin = xMin
+    } else if (!"xMin" %in% names(option)) {
+      if (option$isCompound) {
+        option$xMin = 0
+      }  else {
+          option$xMin = -Inf
       }
-    if (is.finite(xMin) && is.finite(xMax)) {
+    }
+    if (!missing(xMax)) {
+      option$xMax = xMax
+    } else if (!"xMax" %in% names(option)) {
+      option$xMax = Inf
+    }
+    if (!missing(SixSigmaRule)) {
+      option$SixSigmaRule = SixSigmaRule
+    } else if (!"SixSigmaRule" %in% names(option)) {
+      if (option$isCompound) {
+        option$SixSigmaRule = 10
+      }  else {
+          option$SixSigmaRule = 6
+      }
+    }
+
+    if (!"tolDiff" %in% names(option)) {
+      option$tolDiff = 1e-04
+    }
+    if (!"crit" %in% names(option)) {
+      option$crit = 1e-12
+    }
+    if (!missing(isPlot)) {
+      option$isPlot = isPlot
+    } else if (!"isPlot" %in% names(option)) {
+      option$isPlot = TRUE
+    }
+
+    # Other options parameters
+
+
+    if (!"qf0" %in% names(option)) {
+      option$qf0 = Re((cf(1e-4) - cf(-1e-4)) / (2e-4 * 1i))
+    }
+    if (!"maxiter" %in% names(option)) {
+      option$maxiter = 1000
+    }
+    if (!"xN" %in% names(option)) {
+      option$xN = 101
+    }
+    if (!"chebyPts" %in% names(option)) {
+      option$chebyPts = 2^8
+    }
+    if (!"CorrectCDF" %in% names(option)) {
+      if (option$isCircular) {
+        option$CorrectCDF = TRUE
+      } else {
+        option$CorrectCDF = FALSE
+      }
+    }
+    if (!"isInterp" %in% names(option)) {
+      option$isInterp = FALSE
+    }
+
+    # First, set a special treatment if the real value of CF at infinity (large value)
+    # is positive, i.e. const = real(cf(Inf)) > 0. In this case the
+    # compound CDF has jump at 0 of size equal to this value, i.e. cdf(0) =
+    # const, and pdf(0) = Inf. In order to simplify the calculations, here we
+    # calculate PDF and CDF of a distribution given by transformed CF, i.e.
+    # cf_new(t) = (cf(t)-const) / (1-const); which is converging to 0 at Inf,
+    # i.e. cf_new(Inf) = 0. Using the transformed CF requires subsequent
+    # recalculation of the computed CDF and PDF, in order to get the originaly
+    # required values: Set pdf_original(0) =  Inf & pdf_original(x) = pdf_new(x) * (1-const),
+    # for x > 0. Set cdf_original(x) =  const + cdf_new(x) * (1-const).
+
+
+    const <- abs(Re(cf(1e+30)))
+    if (option$isCompound) {
+      cfOld <- cf
+      if (const > 1e-13) {
+        cf <- function(x)
+          ((cfOld(x) - const) / (1 - const))
+      }
+    }
+
+    if ("DIST" %in% names(option)) {
+      # Set values from the last evaluation.
+
+      xMean <- option$DIST$xMean
+      cft <- option$DIST$cft
+      xMin <- option$DIST$xMin
+      xMax <- option$DIST$xMax
+      N <- option$DIST$N
+      k <- option$DIST$k
       xRange <- xMax - xMin
-    } else if (!is.null(T)) {
-      xRange <- 2*pi / (T/N)
-      if (is.finite(xMax)) {
-        xMin = xMax - xRange
-      } else if (is.finite(xMin)) {
-        xMax = xMin + xRange
-      } else {
-        xMin = xMean - xRange/2
-        xMax = xMean + xRange/2
-      }
-    } else if (!is.null(dt)) {
-      xRange <- 2*pi / dt
-      if (is.finite(xMax)) {
-        xMin = xMax - xRange
-      } else if (is.finite(xMin)) {
-        xMax = xMin + xRange
-      } else {
-          xMin = xMean - xRange/2
-          xMax = xMean + xRange/2
-      }
+      dt <- 2 * pi / xRange
+      t <- (1:N) * dt
+      xStd <- NaN
     } else {
+      N <- 2 * option$N
+      dt <- option$dt
+      T <- option$T
+      xMin <- option$xMin
+      xMax <- option$xMax
+      xMean <- option$xMean
+      xStd <- option$xStd
+      SixSigmaRule <- option$SixSigmaRule
+      tolDiff <- option$tolDiff
+      cft <- cf(tolDiff * (1:4))
+
+
+      # Evaluate values from input
+
+      if (is.null(xMean)) {
+        if (option$isCircular) {
+          xMean <- Arg(cf[1])
+        } else {
+          xMean <-
+            Re((-cft[2] + 8 * cft[1] - 8 * Conj(cft[1]) + Conj(cft[2])) / (1i * 12 * tolDiff))
+        }
+      }
+      if (is.null(xStd)) {
+        if (option$isCircular) {
+          xStd <- sqrt(-2 * log(abs(cf(1))))
+        } else {
+          xM2 <-
+            Re(
+              -(
+                Conj(cft[4]) - 16 * Conj(cft[3]) + 64 * Conj(cft[2]) + 16 * Conj(cft[1]) - 130 + 16 * Conj(cft[1]) + 64 * cft[2] - 16 * cft[3] + cft[4]
+              ) / (144 * tolDiff ^ 2)
+            )
+          xStd <- sqrt(xM2 - xMean ^ 2)
+        }
+      }
+      if (is.finite(xMin) && is.finite(xMax)) {
+        xRange <- xMax - xMin
+      } else if (!is.null(T)) {
+        xRange <- 2 * pi / (T / N)
+        if (is.finite(xMax)) {
+          xMin = xMax - xRange
+        } else if (is.finite(xMin)) {
+          xMax = xMin + xRange
+        } else {
+          xMin = xMean - xRange / 2
+          xMax = xMean + xRange / 2
+        }
+      } else if (!is.null(dt)) {
+        xRange <- 2 * pi / dt
+        if (is.finite(xMax)) {
+          xMin = xMax - xRange
+        } else if (is.finite(xMin)) {
+          xMax = xMin + xRange
+        } else {
+          xMin = xMean - xRange / 2
+          xMax = xMean + xRange / 2
+        }
+      } else {
         if (option$isCircular) {
           xMin <- -pi
           xMax <- pi
         } else {
-            if (is.finite(xMin)) {
-              xMax <- xMean + SixSigmaRule * xStd
-            } else if (is.finite(xMax)) {
-              xMin <- xMean - SixSigmaRule * xStd
-            } else {
-              xMin <- xMean - SixSigmaRule * xStd
-              xMax <- xMean + SixSigmaRule * xStd
-            }
+          if (is.finite(xMin)) {
+            xMax <- xMean + SixSigmaRule * xStd
+          } else if (is.finite(xMax)) {
+            xMin <- xMean - SixSigmaRule * xStd
+          } else {
+            xMin <- xMean - SixSigmaRule * xStd
+            xMax <- xMean + SixSigmaRule * xStd
+          }
         }
-      xRange <- xMax - xMin
+        xRange <- xMax - xMin
+      }
+
+      xRange  <- xRange
+      dt      <- 2 * pi / xRange
+      t       <- (1:N) * dt
+      cft     <- cf(t)
+      cft[N]    <- cft[N] / 2
+
+      option$DIST$xMean   <- xMean
+      option$DIST$cft     <- cft
+      option$DIST$xMin    <- xMin
+      option$DIST$xMax    <- xMax
+      option$DIST$N       <- N
+      option$DIST$xRange  <- xRange
+      option$DIST$dt      <- dt
+      option$DIST$t       <- t
     }
 
-    xRange  <- xRange
-    dt      <- 2*pi / xRange
-    t       <- (1:N) * dt
-    cft     <- cf(t)
-    cft[N]    <- cft[N]/2
 
-    option$DIST$xMean   <- xMean
-    option$DIST$cft     <- cft
-    option$DIST$xMin    <- xMin
-    option$DIST$xMax    <- xMax
-    option$DIST$N       <- N
-    option$DIST$xRange  <- xRange
-    option$DIST$dt      <- dt
-    option$DIST$t       <- t
-  }
+    # ALGORITHM ---------------------------------------------------------------
 
+    if (missing(x)) {
+      x <- seq(xMin, xMax, length.out = option$xN)
+    }
 
-# ALGORITHM ---------------------------------------------------------------
+    if (option$isInterp) {
+      xOrg <- x
+      #Chebysev points
+      x <- (xMax - xMin) * (-cos(pi * (0:option$chebyPts) / option$chebyPts) + 1) / 2 + xMin
+    } else {
+      xOrg <- c()
+    }
 
-  if (missing(x)) {x <- seq(xMin, xMax, length.out = option$xN)}
+    #WARNING: OUT of range
 
-#WARNING: OUT of range
+    if (any(x < xMin || any(x > xMax))) {
+      warning(
+        "CharFun: cf2DistGP" ,
+        "x out of range (the used support): [xMin, xMax] = [",
+        xMin,
+        ", ",
+        xMax,
+        "]!"
+      )
+    }
 
-	if (any(x < xMin || any(x > xMax))) {
-		warning("CharFun: cf2DistGP" ,
-		        "x out of range (the used support): [xMin, xMax] = [", xMin, ", ", xMax, "]!")
-	}
+    # Evaluate the required functions
 
-# Evaluate the required functions
+    szx <- dim(x)
+    x <- c(x)
+    E <- exp((-1i) * x %*% t(t))
 
-  szx <- dim(x)
-  x <- c(x)
-  E <- exp((-1i)*x%*%t(t))
+    # CDF estimate computed by using the simple trapezoidal quadrature rule
 
-# CDF estimate computed by using the simple trapezoidal quadrature rule
+    cdf <- (xMean - x) / 2 + Im(E %*% (cft / t))
+    cdf <- 0.5 - (cdf %*% dt) / pi
 
-  cdf <- (xMean - x)/2 + Im(E %*% (cft / t))
-  cdf <- 0.5 - (cdf %*% dt) / pi
+    # Correct the CDF (if the computed result is out of (0,1))
+    # This is useful for circular distributions over intervals of length 2*pi,
+    # as e.g. the von Mises distribution
 
-# Correct the CDF (if the computed result is out of (0,1))
-# This is useful for circular distributions over intervals of length 2*pi,
-# as e.g. the von Mises distribution
+    corrCDF <- 0
+    if (option$CorrectCDF) {
+      if (min(cdf) < 0) {
+        corrCDF <- min(cdf)
+        cdf <- cdf - corrCDF
+      }
+      if (max(cdf) < 1) {
+        corrCDF <- max(cdf)
+        cdf <- cdf - corrCDF
+      }
+    }
 
-  corrCDF <- 0
-  if (option$CorrectCDF) {
-  	if (min(cdf) < 0) {
-  		corrCDF <- min(cdf)
-  		cdf <- cdf - corrCDF
-  	}
-  	if (max(cdf) < 1) {
-  		corrCDF <- max(cdf)
-  		cdf <- cdf - corrCDF
-  	}
-  }
+    dim(cdf) <- szx
 
-  dim(cdf) <- szx
+    # PDF estimate computed by using the simple trapezoidal quadrature rule
 
-# PDF estimate computed by using the simple trapezoidal quadrature rule
+    pdf <- 0.5 + Re(E %*% cft)
+    pdf <- (pdf %*% dt) / pi
+    pdf[pdf < 0] <- 0
+    dim(pdf) <- szx
+    dim(x) <- szx
 
-  pdf <- 0.5 + Re(E %*% cft)
-  pdf <- (pdf %*% dt) / pi
-  pdf[pdf<0] <- 0
-  dim(pdf) <- szx
-  dim(x) <- szx
+    # REMARK:
+    # Note that, exp(-1i*x_i*0) = cos(x_i*0) + 1i*sin(x_i*0) = 1. Moreover,
+    # cf(0) = 1 and lim_{t -> 0} cf(t)/t = E(X) - x. Hence, the leading term of
+    # the trapezoidal rule for computing the CDF integral is CDFfun_1 = (xMean- x)/2,
+    # and PDFfun_1 = 1/2 for the PDF integral, respectively.
 
-# REMARK:
-# Note that, exp(-1i*x_i*0) = cos(x_i*0) + 1i*sin(x_i*0) = 1. Moreover,
-# cf(0) = 1 and lim_{t -> 0} cf(t)/t = E(X) - x. Hence, the leading term of
-# the trapezoidal rule for computing the CDF integral is CDFfun_1 = (xMean- x)/2,
-# and PDFfun_1 = 1/2 for the PDF integral, respectively.
+    # Reset the transformed CF, PDF, and CDF to the original values
 
-# Reset the transformed CF, PDF, and CDF to the original values
+    if (option$isCompound) {
+      cf  <- cfOld
+      cdf <- const + cdf * (1 - const)
+      pdf = pdf * (1 - const)
+      pdf[x == 0] = Inf
+      pdf[x == xMax] = NA
+    }
 
-  if (option$isCompound) {
-    cf  <- cfOld
-    cdf <- const + cdf * (1 - const)
-    pdf = pdf * (1-const)
-    pdf[x == 0] = Inf
-    pdf[x == xMax] = NA
-  }
+    # Calculate the precision criterion PrecisionCrit = abs(cf(t)/t) <= tol,
+    # PrecisionCrit should be small for t > T, smaller than tolerance
+    # options$crit
 
-# Calculate the precision criterion PrecisionCrit = abs(cf(t)/t) <= tol,
-# PrecisionCrit should be small for t > T, smaller than tolerance
-# options$crit
+    PrecisionCrit = abs(cft[length(cft)] / t[length(t)])
+    isPrecisionOK = (PrecisionCrit <= option$crit)
 
-  PrecisionCrit = abs(cft[length(cft)] / t[length(t)])
-  isPrecisionOK = (PrecisionCrit <= option$crit)
+    # QF evaluated by the Newton-Raphson iterative scheme
 
-# QF evaluated by the Newton-Raphson iterative scheme
-
-  if (!missing(prob)) {
-    isPlot = option$isPlot
-    option$isPlot = FALSE
-    szp <- dim(prob)
-    maxiter <- option$maxiter
-    crit <- option$crit
-    qf <- option$qf0
-    criterion <- TRUE
-    count <- 0
-    res <- cf2DistGP(cf, qf, option = option)
-    cdfQ <- res$cdf
-    pdfQ <- res$pdf
-
-
-    while (criterion) {
-      count <- count + 1
-      correction = (cdfQ - corrCDF - prob) / pdfQ
-      qf = pmax(xMin, pmin(xMax, qf - correction))
-
-      res <- cf2DistGP(function(x) cf(x), x = qf, option = option)
+    if (!missing(prob)) {
+      isPlot = option$isPlot
+      option$isPlot = FALSE
+      szp <- dim(prob)
+      maxiter <- option$maxiter
+      crit <- option$crit
+      qf <- option$qf0
+      criterion <- TRUE
+      count <- 0
+      res <- cf2DistGP(cf, qf, option = option)
       cdfQ <- res$cdf
       pdfQ <- res$pdf
 
-      criterion <- any(abs(correction) > crit * abs(qf)) &&
-                        max(abs(correction)) > crit && count < maxiter
+
+      while (criterion) {
+        count <- count + 1
+        correction <- (cdfQ - corrCDF - prob) / pdfQ
+        qf <- pmax(xMin, pmin(xMax, qf - correction))
+
+        res <- cf2DistGP(function(x)
+          cf(x), x = qf, option = option)
+        cdfQ <- res$cdf
+        pdfQ <- res$pdf
+
+        criterion <- any(abs(correction) > crit * abs(qf)) &&
+          max(abs(correction)) > crit &&
+          count < maxiter
+      }
+
+      dim(qf) <- szp
+      dim(prob) <- szp
+      option$isPlot <- isPlot
+
+    } else {
+      qf <- c()
+      count = c()
+      correction = c()
+      prob = c()
     }
 
-    dim(qf) <- szp
-    dim(prob) <- szp
-    option$isPlot <- isPlot
+    if (option$isInterp) {
+      id <- is.finite(pdf)
+      PDF <- function(xNew) pmax(0, interpBarycentric(x[id], pdf[id],xNew))
 
-  } else {
-    qf <- c()
-    count = c()
-    correction = c()
-    prob = c()
+      id <- is.finite(cdf)
+      CDF <- function(xNew) pmax(0, pmin(1, interpBarycentric(x[i]), cdf[id], xNew))
+
+      QF <- function(prob) interpBarycentric(cdf[id], x[id], prob)
+
+      RND <- function(n) QF(runif(n))
+    }
+
+    result <- list(
+      "x"                  = x,
+      "cdf"                = cdf,
+      "pdf"                = pdf,
+      "prob"               = prob,
+      "qf"                 = qf,
+      "SixSigmaRule"       = option$SixSigmaRule,
+      "N"                  = N,
+      "dt"                 = dt,
+      "T"                  = t[length(t)],
+      "PrecisionCrit"      = PrecisionCrit,
+      "myPrecisionCrit"    = option$crit,
+      "isPrecisionOK"      = isPrecisionOK,
+      "xRange"             = xRange,
+      "xMean"              = xMean,
+      "xStd"               = xStd,
+      "xMin"               = xMin,
+      "xMax"               = xMax,
+      "cf"                 = cf,
+      "const"              = const,
+      "isCompound"         = option$isCompound,
+      "details$count"      = count,
+      "details$correction" = correction,
+      "option"             = option
+    )
+
+    if (option$isInterp) {
+      result$PDF <- PDF
+      result$CDF <- CDF
+      result$QF <- QF
+      result$RND <- RND
+    }
+
+    # PLOT the PDF / CDF
+
+    if (length(x))
+      option$isPot = FALSE
+
+    if (option$isPlot) {
+      plot(
+        x = x,
+        y = pdf,
+        main = "PDF Specified by the Characteristic Function",
+        xlab = "x",
+        ylab = "pdf",
+        type = "l",
+        col = "blue"
+      )
+
+      plot(
+        x = x,
+        y = cdf,
+        main = "CDF Specified by the Characteristic Function",
+        xlab = "x",
+        ylab = "cdf",
+        type = "l",
+        col = "red"
+      )
+    }
+
+    return(result)
+
   }
-
-  result <- list(
-    "x"                  = x,
-    "cdf"                = cdf,
-    "pdf"                = pdf,
-    "prob"               = prob,
-    "qf"                 = qf,
-    "SixSigmaRule"       = option$SixSigmaRule,
-    "N"                  = N,
-    "dt"                 = dt,
-    "T"                  = t[length(t)],
-    "PrecisionCrit"      = PrecisionCrit,
-    "myPrecisionCrit"    = option$crit,
-    "isPrecisionOK"      = isPrecisionOK,
-    "xRange"             = xRange,
-    "xMean"              = xMean,
-    "xStd"               = xStd,
-    "xMin"               = xMin,
-    "xMax"               = xMax,
-    "cf"                 = cf,
-    "const"              = const,
-    "isCompound"         = option$isCompound,
-    "details$count"      = count,
-    "details$correction" = correction,
-    "option"             = option
-  )
-
-# PLOT the PDF / CDF
-
-  if (length(x)) option$isPot = FALSE
-
-  if (option$isPlot) {
-    plot(x = x, y = pdf,
-         main="PDF Specified by the Characteristic Function",
-         xlab="x",
-         ylab="pdf",
-         type="l",
-         col="blue")
-
-    plot(x = x, y = cdf,
-         main="CDF Specified by the Characteristic Function",
-         xlab="x",
-         ylab="cdf",
-         type="l",
-         col="red")
-  }
-
-  return(result)
-
-}

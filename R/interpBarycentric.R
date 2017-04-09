@@ -33,7 +33,7 @@ interpBarycentric <- function(x, fun, xNew, isChebPts = TRUE) {
   nxNew <- length(xNew)
   funNew <- seq(0, 0, length.out = length(xNew))
 
-  w <- (-1)^seq(0, length(xNew) - 1)
+  w <- (-1)^seq(0, length(x) - 1)
   w[1] <- w[1]/2
   w[length(x)] <- w[length(x)]/2
 
