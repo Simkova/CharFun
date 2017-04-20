@@ -48,6 +48,7 @@
 #'         }
 #'     }
 #'
+#' @param isCircular    treat the circular distributions, default FALSE
 #' @param isCompound    treat the compound distributions, default FALSE
 #' @param N             N points used by GP, default 2^10 (2^14 for compound distribution)
 #' @param SixSigmaRule  set the rule for computing domain, default 6
@@ -271,7 +272,7 @@ cf2DistGP <-
 
       if (is.null(xMean)) {
         if (option$isCircular) {
-          xMean <- Arg(cf[1])
+          xMean <- Arg(cft[1])
         } else {
           xMean <-
             Re((-cft[2] + 8 * cft[1] - 8 * Conj(cft[1]) + Conj(cft[2])) / (1i * 12 * tolDiff))
@@ -535,6 +536,7 @@ cf2DistGP <-
         type = "l",
         col = "blue"
       )
+      grid()
 
       plot(
         x = x,
@@ -545,6 +547,7 @@ cf2DistGP <-
         type = "l",
         col = "red"
       )
+      grid()
     }
 
     return(result)
