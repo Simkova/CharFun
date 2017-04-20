@@ -120,6 +120,7 @@
 #' violated, and the method should be improved (e.g. by selecting larger N
 #' or considering other more sofisticated algorithm - not considered here).
 #'
+#' @example Examples/example_cf2DistGP.R
 #' @export
 #'
 #'
