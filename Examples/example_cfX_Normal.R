@@ -1,20 +1,9 @@
-## EXAMPLE1 (CF of the Logarithmic distribution with the parameter p = 0.5)
- p <- 0.5
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p), t, title = "CF of the Logarithmic distribution with the parameter p = 0.5")
+## EXAMPLE1 (CF of the Normal distribution N(1,1))
+t <- seq(-5, 5, length.out = 501)
+plotGraf(function(t) cfX_Normal(t, mean = 1, variance = 1), t, title = "CF of the Normal distribution N(1,1)")
 
-#' ## EXAMPLE2 (CF of the compound Logarithmic-Exponential distributionn)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p, cfX), t, title = "CF of the compound Logarithmic-Exponential distribution")
-
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- cf <- function(t) cfN_Logarithmic(t, p, cfX)
- x <- seq(0, 3, length.out = 101)
- prob <- c(0.9, 0.95, 0.99)
- result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+## EXAMPLE2 (PDF/CDF of the Normal distribution N(1,1))
+cf <- function(t) cfX_Normal(t, mean = 1, variance = 1)
+x <- seq(-4, 4, length.out = 101)
+prob <- c(0.9, 0.95, 0.99)
+result <- cf2DistGP(cf, x, prob, N = 2^5, SixSigmaRule = 8)

@@ -1,20 +1,25 @@
-## EXAMPLE1 (CF of the Logarithmic distribution with the parameter p = 0.5)
- p <- 0.5
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p), t, title = "CF of the Logarithmic distribution with the parameter p = 0.5")
+## EXAMPLE1 (CF of the ChiSquared distribution with df = 1, npc = 2)
+  df <- 1
+  npc <- 2
+  t <- seq(-50, 50, length.out = 501)
+  plotGraf(function(t) cfX_ChiSquaredNC(t, df, npc), t, title = "CF of the Chi-squared distribution with df = 1, npc = 2")
 
-#' ## EXAMPLE2 (CF of the compound Logarithmic-Exponential distributionn)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p, cfX), t, title = "CF of the compound Logarithmic-Exponential distribution")
+## EXAMPLE2 (PDF/CDF of the ChiSquared distribution with df = 3, npc = 2)
+  df <- 3
+  npc <- 2
+  prob <- c(0.9, 0.95, 0.99)
+  cf <- function(t) cfX_ChiSquaredNC(t, df, npc)
+  x <- seq(-0, 15, length.out = 101)
+  result <- cf2DistGP(cf, x, prob, N = 2^14)
 
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- cf <- function(t) cfN_Logarithmic(t, p, cfX)
- x <- seq(0, 3, length.out = 101)
- prob <- c(0.9, 0.95, 0.99)
- result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+## EXAMPLE3 (PDF/CDF of the compound Binomial-ChiSquared distribution)
+  n <- 25
+  p <- 0.3
+  df <- 3
+  npc <- 2
+  prob <- c(0.9, 0.95, 0.99)
+  cfX <- function(t) cfX_ChiSquaredNC(t, df, npc)
+  cf <- function(t) cfN_Binomial(t, n, p, cfX)
+  x <- seq(-0, 80, length.out = 501)
+  result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+

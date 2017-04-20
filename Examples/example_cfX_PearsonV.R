@@ -1,20 +1,24 @@
-## EXAMPLE1 (CF of the Logarithmic distribution with the parameter p = 0.5)
- p <- 0.5
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p), t, title = "CF of the Logarithmic distribution with the parameter p = 0.5")
+## EXAMPLE1 ((CF of the PearsonV distribution)
+  alpha <- 3/2
+  beta <- 2/3
+  t <- seq(-10, 10, length.out = 1001)
+  plotGraf(function(t) cfX_PearsonV(t, alpha, beta), t, title = "CF of the PearsonV distribution with alpha = 3/2, beta = 2/3")
 
-#' ## EXAMPLE2 (CF of the compound Logarithmic-Exponential distributionn)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p, cfX), t, title = "CF of the compound Logarithmic-Exponential distribution")
+## EXAMPLE2 (PDF/CDF of the Beta distribution with alpha = 3/2, beta = 2/3)
+  alpha <- 3/2
+  beta <- 2/3
+  prob <- c(0.9, 0.95, 0.99)
+  x <- seq(0, 40, length.out = 101)
+  cf <- function(t) cfX_PearsonV(t, alpha, beta)
+  result <- cf2DistGP(cf, x, prob, xMin = 0, N = 2^14, SixSigmaRule = 10)
 
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- cf <- function(t) cfN_Logarithmic(t, p, cfX)
- x <- seq(0, 3, length.out = 101)
- prob <- c(0.9, 0.95, 0.99)
- result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+## EXAMPLE3 (PDF/CDF of the compound Binomial-PearsonV distribution)
+  n <- 25
+  p <- 0.3
+  alpha <- 3/2
+  beta <- 2/3
+  prob <- c(0.9, 0.95, 0.99)
+  x <- seq(0, 200, length.out = 101)
+  cfX <- function(t) cfX_PearsonV(t, alpha, beta)
+  cf <- function(t) cfN_Binomial(t, n, p, cfX);
+  result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
