@@ -27,7 +27,7 @@ cfX_InverseGamma <- function(t, alpha = 1, beta = 1) {
   szt <- dim(t)
   t <- c(t)
 
-  cf <- unlist(lapply(t, function(t) tryCatch(BesselK(sqrt((0-4i)*beta*t), alpha), error = function(e) NA)))
+  cf <- unlist(lapply(t, function(t) tryCatch(BesselK(sqrt((0-4i)*beta*t), alpha), error = function(e) 0)))
   cf <- 2/gamma(alpha) * ((0-1i)*beta*t)^(alpha/2) * cf
   cf[t == 0] <- 1
 
