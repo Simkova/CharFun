@@ -24,32 +24,34 @@ and npc (non-centrality, npc > 0), i.e.
 cfX_ChiSquared(t, df, npc) = exp((i*npc*t)/(1 - 2it)) / (1 - 2it)^(df/2)
 }
 \examples{
-## EXAMPLE1 (CF of the Logarithmic distribution with the parameter p = 0.5)
- p <- 0.5
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p), t, title = "CF of the Logarithmic distribution with the parameter p = 0.5")
+## EXAMPLE1 (CF of the ChiSquared distribution with df = 1)
+ df <- 1
+ t <- seq(-50, 50, length.out = 501)
+ plotGraf(function(t) cfX_ChiSquared(t, df), t, title = "CF of the Chi-squared distribution with df = 1")
 
-#' ## EXAMPLE2 (CF of the compound Logarithmic-Exponential distributionn)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p, cfX), t, title = "CF of the compound Logarithmic-Exponential distribution")
-
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- cf <- function(t) cfN_Logarithmic(t, p, cfX)
- x <- seq(0, 3, length.out = 101)
+## EXAMPLE2 (PDF/CDF of the ChiSquared distribution with df = 3)
+ df <- 3
  prob <- c(0.9, 0.95, 0.99)
+ cf <- function(t) cfX_ChiSquared(t, df)
+ x <- seq(-0, 15, length.out = 101)
+ result <- cf2DistGP(cf, x, prob, xMin = 0, xMax = 22, N = 2^14)
+
+## EXAMPLE3 (PDF/CDF of the compound Binomial-ChiSquared distribution)
+ n <- 25
+ p <- 0.3
+ df <- 3
+ prob <- c(0.9, 0.95, 0.99)
+ cfX <- function(t) cfX_ChiSquared(t, df)
+ cf <- function(t) cfN_Binomial(t, n, p, cfX)
+ x <- seq(-0, 80, length.out = 501)
  result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
 }
 \seealso{
 For more details see WIKIPEDIA:
 \url{https://en.wikipedia.org/wiki/Noncentral_chi-squared_distribution}
 
-Other Characteristic Function: \code{\link{cfN_Binomial}},
+Other Characteristic Function: \code{\link{cfC_vonMises}},
+  \code{\link{cfE_Empirical}}, \code{\link{cfN_Binomial}},
   \code{\link{cfN_Delaporte}},
   \code{\link{cfN_GeneralizedPoisson}},
   \code{\link{cfN_Geometric}},
@@ -57,19 +59,7 @@ Other Characteristic Function: \code{\link{cfN_Binomial}},
   \code{\link{cfN_NegativeBinomial}},
   \code{\link{cfN_Poisson}},
   \code{\link{cfN_PolyaEggenberger}},
-  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Gaussian}},
-  \code{\link{cfS_Rectangular}},
-  \code{\link{cfS_StudentT}},
-  \code{\link{cfS_Trapezoidal}},
-  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquared}},
-  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
-  \code{\link{cfX_InverseGamma}}, \code{\link{cfX_Normal}},
-  \code{\link{cfX_PearsonV}},
-  \code{\link{cfX_Rectangular}},
-  \code{\link{cfX_Triangular}}
-
-Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
+  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Beta}},
   \code{\link{cfS_Gaussian}},
   \code{\link{cfS_Rectangular}},
   \code{\link{cfS_StudentT}},
@@ -77,7 +67,22 @@ Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
   \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
   \code{\link{cfX_ChiSquared}},
   \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
-  \code{\link{cfX_InverseGamma}}, \code{\link{cfX_Normal}},
+  \code{\link{cfX_InverseGamma}},
+  \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
+  \code{\link{cfX_PearsonV}},
+  \code{\link{cfX_Rectangular}},
+  \code{\link{cfX_Triangular}}
+
+Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
+  \code{\link{cfS_Beta}}, \code{\link{cfS_Gaussian}},
+  \code{\link{cfS_Rectangular}},
+  \code{\link{cfS_StudentT}},
+  \code{\link{cfS_Trapezoidal}},
+  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
+  \code{\link{cfX_ChiSquared}},
+  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
+  \code{\link{cfX_InverseGamma}},
+  \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
   \code{\link{cfX_PearsonV}},
   \code{\link{cfX_Rectangular}},
   \code{\link{cfX_Triangular}}

@@ -48,6 +48,8 @@ cf2DistFFT automatically selects vector x from the domain}
 
 \item{isCompound}{treat the compound distributions, default FALSE}
 
+\item{isCircular}{treat the circular distributions, default FALSE}
+
 \item{N}{N points used by GP, default 2^10 (2^14 for compound distribution)}
 
 \item{SixSigmaRule}{set the rule for computing domain, default 6}

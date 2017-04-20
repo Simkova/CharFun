@@ -22,32 +22,22 @@ the Normal distribution with mean = mean and variance = variance: N(mean, varian
 cfX_Normal(t, mean, variance) = exp(imeant -1/2variance^2t^2)
 }
 \examples{
-## EXAMPLE1 (CF of the Logarithmic distribution with the parameter p = 0.5)
- p <- 0.5
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p), t, title = "CF of the Logarithmic distribution with the parameter p = 0.5")
+## EXAMPLE1 (CF of the Normal distribution N(1,1))
+t <- seq(-5, 5, length.out = 501)
+plotGraf(function(t) cfX_Normal(t, mean = 1, variance = 1), t, title = "CF of the Normal distribution N(1,1)")
 
-#' ## EXAMPLE2 (CF of the compound Logarithmic-Exponential distributionn)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- t <- seq(-10, 10, length.out = 501)
- plotGraf(function(t) cfN_Logarithmic(t, p, cfX), t, title = "CF of the compound Logarithmic-Exponential distribution")
-
-## EXAMPLE3 (PDF/CDF of the compound Logarithmic-Exponential distribution)
- p <- 0.5
- lambda <- 5
- cfX <- function(t) cfX_Exponential(t, lambda)
- cf <- function(t) cfN_Logarithmic(t, p, cfX)
- x <- seq(0, 3, length.out = 101)
- prob <- c(0.9, 0.95, 0.99)
- result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+## EXAMPLE2 (PDF/CDF of the Normal distribution N(1,1))
+cf <- function(t) cfX_Normal(t, mean = 1, variance = 1)
+x <- seq(-4, 4, length.out = 101)
+prob <- c(0.9, 0.95, 0.99)
+result <- cf2DistGP(cf, x, prob, N = 2^5, SixSigmaRule = 8)
 }
 \seealso{
 For more details see WIKIPEDIA:
 \url{https://en.wikipedia.org/wiki/Normal_distribution}
 
-Other Characteristic Function: \code{\link{cfN_Binomial}},
+Other Characteristic Function: \code{\link{cfC_vonMises}},
+  \code{\link{cfE_Empirical}}, \code{\link{cfN_Binomial}},
   \code{\link{cfN_Delaporte}},
   \code{\link{cfN_GeneralizedPoisson}},
   \code{\link{cfN_Geometric}},
@@ -55,20 +45,7 @@ Other Characteristic Function: \code{\link{cfN_Binomial}},
   \code{\link{cfN_NegativeBinomial}},
   \code{\link{cfN_Poisson}},
   \code{\link{cfN_PolyaEggenberger}},
-  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Gaussian}},
-  \code{\link{cfS_Rectangular}},
-  \code{\link{cfS_StudentT}},
-  \code{\link{cfS_Trapezoidal}},
-  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
-  \code{\link{cfX_ChiSquared}},
-  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
-  \code{\link{cfX_InverseGamma}},
-  \code{\link{cfX_PearsonV}},
-  \code{\link{cfX_Rectangular}},
-  \code{\link{cfX_Triangular}}
-
-Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
+  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Beta}},
   \code{\link{cfS_Gaussian}},
   \code{\link{cfS_Rectangular}},
   \code{\link{cfS_StudentT}},
@@ -78,7 +55,21 @@ Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
   \code{\link{cfX_ChiSquared}},
   \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
   \code{\link{cfX_InverseGamma}},
-  \code{\link{cfX_PearsonV}},
+  \code{\link{cfX_LogNormal}}, \code{\link{cfX_PearsonV}},
+  \code{\link{cfX_Rectangular}},
+  \code{\link{cfX_Triangular}}
+
+Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
+  \code{\link{cfS_Beta}}, \code{\link{cfS_Gaussian}},
+  \code{\link{cfS_Rectangular}},
+  \code{\link{cfS_StudentT}},
+  \code{\link{cfS_Trapezoidal}},
+  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
+  \code{\link{cfX_ChiSquaredNC}},
+  \code{\link{cfX_ChiSquared}},
+  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
+  \code{\link{cfX_InverseGamma}},
+  \code{\link{cfX_LogNormal}}, \code{\link{cfX_PearsonV}},
   \code{\link{cfX_Rectangular}},
   \code{\link{cfX_Triangular}}
 }
