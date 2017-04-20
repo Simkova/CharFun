@@ -27,7 +27,7 @@ cfX_Triangular <- function(t, a = -1, b = 1, c = 0) {
      szt <- dim(t)
      t <- c(t)
 
-     cf <- -2((b-c)*exp(1i*a*t) - (b-a)*exp(1i*c*t) + (c-a)*exp(1i*b*t))/((b-a)*(c-a)*(b-c)*t^2)
+     cf <- -2*((b-c)*exp(1i*a*t) - (b-a)*exp(1i*c*t) + (c-a)*exp(1i*b*t))/((b-a)*(c-a)*(b-c)*t^2)
      cf[t == 0] <- 1
 
      dim(cf) <- szt

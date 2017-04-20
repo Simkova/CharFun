@@ -45,8 +45,9 @@ plotGraf <- function(f, x, title, xmin, xmax, dx = 0.1, xlab, ylab, px = 0, py =
   if (missing(xlab)) {xlab <- "x"}
   if (missing(ylab)) {ylab <- "f(x)"}
 
-  real = Re(f(x))
-  imag = Im(f(x))
+  f <- f(x)
+  real <- Re(f)
+  imag <- Im(f)
 
   plot(x,real,
        main = title,
@@ -79,4 +80,7 @@ plotGraf <- function(f, x, title, xmin, xmax, dx = 0.1, xlab, ylab, px = 0, py =
          c("Re(f))","Im(f)"),
          fill=c("blue","red")
   )
+
+  grid()
+
 }
