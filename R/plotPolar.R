@@ -17,9 +17,8 @@ plotPolar <- function(angle, radius, title = "", type = "l", color = "blue") {
   x <- radius * cos(angle)
   y <- radius * sin(angle)
 
-  mx <- max(abs(x))
-  my <- max(abs(y))
-  m <- max(mx, my)
+  m <- max(abs(radius*exp(1i*angle)))
+  m <- ceiling(m)
 
   par(pty="s")
 
@@ -44,7 +43,7 @@ plotPolar <- function(angle, radius, title = "", type = "l", color = "blue") {
   }
 
   a <- seq(0, 2*pi, length.out = 101)
-  p <- 3
+  p <- 4
   m <- m/p
 
   for (i in seq(1:p)) {
