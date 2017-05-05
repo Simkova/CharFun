@@ -14,7 +14,8 @@
 #'
 plotPolar <- function(angle, radius, title = "", type = "l", color = "blue") {
 
-  jydgsxgdzfdz
+
+  sgag
   x <- radius * cos(angle)
   y <- radius * sin(angle)
 
