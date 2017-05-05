@@ -273,7 +273,7 @@ cf2DistGP <-
 
       if (is.null(xMean)) {
         if (option$isCircular) {
-          xMean <- Arg(cft[1])
+          xMean <- Arg(cf(1))
         } else {
           xMean <-
             Re((-cft[2] + 8 * cft[1] - 8 * Conj(cft[1]) + Conj(cft[2])) / (1i * 12 * tolDiff))
@@ -283,13 +283,8 @@ cf2DistGP <-
         if (option$isCircular) {
           xStd <- sqrt(-2 * log(abs(cf(1))))
         } else {
-          xM2 <-
-            Re(
-              -(
-                Conj(cft[4]) - 16 * Conj(cft[3]) + 64 * Conj(cft[2]) + 16 * Conj(cft[1]) - 130 + 16 * Conj(cft[1]) + 64 * cft[2] - 16 * cft[3] + cft[4]
-              ) / (144 * tolDiff ^ 2)
-            )
-          xStd <- sqrt(xM2 - xMean ^ 2)
+          xM2   = (205/72 - 16*Re(cft[1])/5 + 2*Re(cft[2])/5 - 16*Re(cft[3])/315 + 2*Re(cft[4])/560) / tolDiff^2
+          xStd  = sqrt(xM2 - xMean^2)
         }
       }
       if (is.finite(xMin) && is.finite(xMax)) {

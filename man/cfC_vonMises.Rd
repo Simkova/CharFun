@@ -42,7 +42,7 @@ plotGraf(cf, t, title = "CF of the mixture of the von Mises distribution")
 mu <- 0
 kappa <- 1
 cf  <- function(t) cfC_vonMises(t, mu, kappa)
-result <- cf2DistGP(cf, xMin = -pi, xMax = pi, isCircular)
+result <- cf2DistGP(cf, xMin = -pi, xMax = pi)
 angle <- result$x
 radius <- result$pdf
 plotPolar(angle, radius)
