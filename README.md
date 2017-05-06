@@ -47,7 +47,7 @@ You can download package from
 
 - https://github.com/Simkova/CharFun/releases
 
-in package in R-studio you chose Package Archive File (.tar.gz).
+in installe packages in R-studio you chose Package Archive File (.tar.gz).
 
 Or you can chose it from Cran repository
 
