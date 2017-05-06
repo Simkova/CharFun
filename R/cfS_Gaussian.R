@@ -6,7 +6,6 @@
 #' normal distribution with mean = 0 and variance = 1: N(0, 1))
 #' cfS_Gaussian(t) = exp(-t^2/2)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'

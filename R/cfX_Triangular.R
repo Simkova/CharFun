@@ -6,7 +6,6 @@
 #' (Triangular distribution with mean = a + b + c)/3 and variance = 1/18(a^2 + b^2 + c^2 + - ab - ac - bc))
 #' cfX_Triangula(t, a, b, c) = -2((b-c)exp(iat) - (b-a)exp(ict) + (c-a)exp(ibt))/((b-a)(c-a)(b-c)t^2)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:

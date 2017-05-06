@@ -12,7 +12,6 @@
 #'  1) theta = 1/2; Arcsine distribution on (-1,1):     cf(t) = besselj(0,t).
 #'  2) theta = 1;   Rectangular distribution on (-1,1): cf(t) = sin(t)/t;
 #'
-#' @family Characteristic Function
 #' @family Continuous Symetric distribution
 #' @family Continuous Probability distribution
 #'

@@ -6,7 +6,6 @@
 #' (Rectangular distribution with mean = (a + b)/2 and variance = 1/12(b - a)^2)
 #' cfX_Rectangular(t, a, b) = (exp(ibt) - exp(iat))/(i(b - a)t)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:

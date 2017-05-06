@@ -6,7 +6,6 @@
 #' (Rectangular distribution with mean = 0 and variance = 1/3*a^2)
 #' cfS_Rectangular(t, a) = sin(at)/at
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'

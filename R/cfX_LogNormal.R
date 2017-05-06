@@ -33,7 +33,6 @@
 #' function 'integrate', with precission specified by tolerance tol (default
 #' value is tol = 1e-6).
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:

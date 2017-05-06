@@ -7,7 +7,6 @@
 #'
 #' cfX_Gamma(t, alpha, beta) = (1 - it/beta)^(-alpha)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:

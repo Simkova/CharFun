@@ -9,7 +9,6 @@
 #' cf(t) = besseli(t,kappa)/besseli(0,kappa) .* exp(1i*t*mu).
 #'
 #' @family Circular Probability Distribution
-#' @family Characteristic Function
 #'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Von_Mises_distribution}

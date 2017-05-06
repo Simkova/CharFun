@@ -6,7 +6,6 @@
 #' (Triangular distribution with mean = 0 and variance = 1/18(2a^2 + a)
 #' cfS_Triangula(t, a) = (2 - 2cos(at)) / (a^2 * t^2)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'

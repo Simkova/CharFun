@@ -6,7 +6,6 @@
 #' (-1,1) (U-shaped distribution with mean = 0 and variance = 1/2
 #' \deqn{cfS_Arcsine(t) = besselj(0,t)}
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'

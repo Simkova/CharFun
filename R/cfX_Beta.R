@@ -10,7 +10,6 @@
 #' cf(t) = cfX_Beta(t,alpha,beta) = 1F1(alpha ,alpha + beta , i*t)
 #' where 1F1(.;.;.) is the Confluent hypergeometric function.
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:
