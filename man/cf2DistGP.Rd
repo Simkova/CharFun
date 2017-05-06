@@ -156,7 +156,5 @@ result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
 }
 \seealso{
 
-
-Other Algorithm: \code{\link{cf2DistFFT}}
 }
 
