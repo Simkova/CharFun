@@ -39,7 +39,7 @@ kappa2 <- 15
 mu3 <- pi
 kappa3 <- 10
 cf <- function(t) 0.25*cfC_vonMises(t, mu1, kappa1) + 0.25*cfC_vonMises(t, mu2, kappa2) + 0.5*cfC_vonMises(t, mu3, kappa3)
-option <- list()
-option$correctedCDF <- TRUE
-x <- seq(0, 2*pi, length.out = 100)
-result <- cf2DistGP(cf, x, isCircular = TRUE, option = option)
+result <- cf2DistGP(cf, xMin =  -pi, xMax = 2*pi, isCircular = TRUE)
+angle <- result$x
+radius <- result$pdf
+plotPolar(angle, radius)
