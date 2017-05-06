@@ -23,19 +23,15 @@ Installation and requirements
 
 CharFun was developed with R version 3.3.1 (2016-06-21).
 
-To install, you can either clone the directory with Git or download a .zip file. 
+To install, you can either clone the directory with Git or download a .zip file or install package from R CRAN-repository.
 
 ## Option 1: Download .zip file
 
 Download a .zip of CharFun from
 
-- 
+- https://github.com/Simkova/CharFun/releases
 
-After unzipping, you will need to add CharFunTool to the MATLAB path. You can do this either (a) by typing
-```
-addpath(CharFunToolRoot), savepath
-```
-where `CharFunToolRoot` is the path to the unzipped directory, (b) by selecting the `CharFunTool` directory with the `pathtool` command, or (c) though the File > Set Path... dialog from the MATLAB menubar.
+After unzipping, you will need open CharFun.Rproj.
 
 ## Option 2: Clone with Git
 
@@ -43,7 +39,17 @@ To clone the CharFun repository, first navigate in a terminal to where you want 
 ```
 git clone https://github.com/simkova/CharFun.git
 ```
-To use CharFunTool in R, you will need to add the `CharFunTool` directory to the MATLAB path as above.
+and you will need open CharFun.Rproj.
+
+## Option 3: Install package
+
+You can download package from 
+
+- https://github.com/Simkova/CharFun/releases
+
+in package in R-studio you chose Package Archive File (.tar.gz).
+
+Or you can chose it from Cran repository
 
 
 Getting started
