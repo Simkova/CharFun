@@ -69,29 +69,6 @@ result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
 For more details see WIKIPEDIA:
 \url{https://en.wikipedia.org/wiki/Delaporte_distribution}
 
-Other Characteristic Function: \code{\link{cfC_vonMises}},
-  \code{\link{cfE_Empirical}}, \code{\link{cfN_Binomial}},
-  \code{\link{cfN_GeneralizedPoisson}},
-  \code{\link{cfN_Geometric}},
-  \code{\link{cfN_Logarithmic}},
-  \code{\link{cfN_NegativeBinomial}},
-  \code{\link{cfN_Poisson}},
-  \code{\link{cfN_PolyaEggenberger}},
-  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Beta}},
-  \code{\link{cfS_Gaussian}},
-  \code{\link{cfS_Rectangular}},
-  \code{\link{cfS_StudentT}},
-  \code{\link{cfS_Trapezoidal}},
-  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
-  \code{\link{cfX_ChiSquared}},
-  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
-  \code{\link{cfX_InverseGamma}},
-  \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
-  \code{\link{cfX_PearsonV}},
-  \code{\link{cfX_Rectangular}},
-  \code{\link{cfX_Triangular}}
-
 Other Discrete Probability Distribution: \code{\link{cfN_Binomial}},
   \code{\link{cfN_GeneralizedPoisson}},
   \code{\link{cfN_Geometric}},

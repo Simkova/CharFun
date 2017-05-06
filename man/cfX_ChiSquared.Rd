@@ -4,21 +4,25 @@
 \alias{cfX_ChiSquared}
 \title{Characteristic function of Chi-Squared distribution}
 \usage{
-cfX_ChiSquared(t, df)
+cfX_ChiSquared(t, df, npc)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}
 
-\item{df}{degrees of freedom, df > 0}
+\item{df}{degrees of freedom}
+
+\item{npc}{non-centrality parameter, default value = 0}
 }
 \value{
 characteristic function cf(t) of the CHI-SUQARED distribution
 }
 \description{
-cfX_ChiSquared(t,df) evaluates the characteristic function cf(t) of
-the CHI-SUQARED distribution with the parameter df (degrees of freedom, df > 0),
-i.e.
+cfX_ChiSquared(t, df, ncp = 0) evaluates the characteristic function cf(t) of
+the Noncentral Chi-Squared distribution with the parameter df (degrees of freedom, df > 0)
+and npc (non-centrality, npc > 0), i.e.
+
 cfX_ChiSquared(t, df) = (1 - 2it )^(-df/2) = cfX_GAMMA(t, df/2, 1/2)
+cfX_ChiSquared(t, df, npc) = exp((i*npc*t)/(1 - 2it)) / (1 - 2it)^(df/2)
 }
 \examples{
 ## EXAMPLE1 (CF of the ChiSquared distribution with df = 1)
@@ -42,33 +46,36 @@ cfX_ChiSquared(t, df) = (1 - 2it )^(-df/2) = cfX_GAMMA(t, df/2, 1/2)
  cf <- function(t) cfN_Binomial(t, n, p, cfX)
  x <- seq(-0, 80, length.out = 501)
  result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+
+ ## EXAMPLE4 (CF of the ChiSquared distribution with df = 1, npc = 2)
+ df <- 1
+ npc <- 2
+ t <- seq(-50, 50, length.out = 501)
+ plotGraf(function(t) cfX_ChiSquaredNC(t, df, npc), t, title = "CF of the Chi-squared distribution with df = 1, npc = 2")
+
+ ## EXAMPLE5 (PDF/CDF of the ChiSquared distribution with df = 3, npc = 2)
+ df <- 3
+ npc <- 2
+ prob <- c(0.9, 0.95, 0.99)
+ cf <- function(t) cfX_ChiSquaredNC(t, df, npc)
+ x <- seq(-0, 15, length.out = 101)
+ result <- cf2DistGP(cf, x, prob, N = 2^14)
+
+ ## EXAMPLE6 (PDF/CDF of the compound Binomial-ChiSquared distribution)
+ n <- 25
+ p <- 0.3
+ df <- 3
+ npc <- 2
+ prob <- c(0.9, 0.95, 0.99)
+ cfX <- function(t) cfX_ChiSquaredNC(t, df, npc)
+ cf <- function(t) cfN_Binomial(t, n, p, cfX)
+ x <- seq(-0, 80, length.out = 501)
+ result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
+
 }
 \seealso{
 For more details see WIKIPEDIA:
-\url{https://en.wikipedia.org/wiki/Chi-squared_distribution}
-
-Other Characteristic Function: \code{\link{cfC_vonMises}},
-  \code{\link{cfE_Empirical}}, \code{\link{cfN_Binomial}},
-  \code{\link{cfN_Delaporte}},
-  \code{\link{cfN_GeneralizedPoisson}},
-  \code{\link{cfN_Geometric}},
-  \code{\link{cfN_Logarithmic}},
-  \code{\link{cfN_NegativeBinomial}},
-  \code{\link{cfN_Poisson}},
-  \code{\link{cfN_PolyaEggenberger}},
-  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Beta}},
-  \code{\link{cfS_Gaussian}},
-  \code{\link{cfS_Rectangular}},
-  \code{\link{cfS_StudentT}},
-  \code{\link{cfS_Trapezoidal}},
-  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
-  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
-  \code{\link{cfX_InverseGamma}},
-  \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
-  \code{\link{cfX_PearsonV}},
-  \code{\link{cfX_Rectangular}},
-  \code{\link{cfX_Triangular}}
+\url{https://en.wikipedia.org/wiki/Noncentral_chi-squared_distribution}
 
 Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
   \code{\link{cfS_Beta}}, \code{\link{cfS_Gaussian}},
@@ -76,7 +83,6 @@ Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
   \code{\link{cfS_StudentT}},
   \code{\link{cfS_Trapezoidal}},
   \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
   \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
   \code{\link{cfX_InverseGamma}},
   \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
