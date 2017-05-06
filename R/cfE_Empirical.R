@@ -26,7 +26,7 @@
 #'
 #' @export
 
-cfE_Empirical <- function(t, data = 1, cfX) {
+cfE_Empirical <- function(t, data, cfX) {
   weights <- 1 / length(data)
   data <- c(data)
 

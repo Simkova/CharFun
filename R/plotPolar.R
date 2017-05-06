@@ -6,7 +6,6 @@
 #' @param type type of lines, dots
 #' @param color color
 #'
-#' @return
 #' @export
 #'
 #' @examples
@@ -15,7 +14,6 @@
 plotPolar <- function(angle, radius, title = "", type = "l", color = "blue") {
 
 
-  sgag
   x <- radius * cos(angle)
   y <- radius * sin(angle)
 

@@ -20,7 +20,7 @@
 #' function with optional parameters must be pass as lambda function f = function(x) f(x, optional parameters)
 #'
 #'
-#' @returng Graf of function f in argument x or in range [xmin, xmax] with step dx
+#' @return Graf of function f in argument x or in range [xmin, xmax] with step dx
 #' @export
 
 plotGraf <- function(f, x, title, xmin, xmax, dx = 0.1, xlab, ylab, px = 0, py = 0, labelx = TRUE, labely = TRUE) {

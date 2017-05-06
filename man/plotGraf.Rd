@@ -32,6 +32,9 @@ plotGraf(f, x, title, xmin, xmax, dx = 0.1, xlab, ylab, px = 0, py = 0,
 
 \item{labely}{rendering auxiliary line default value TRUE}
 }
+\value{
+Graf of function f in argument x or in range [xmin, xmax] with step dx
+}
 \description{
 plotGraf(f, x, xmin, xmax) plots graf of complex function f in real arguments x or in range [xmin, xmax] with step dx
 }
