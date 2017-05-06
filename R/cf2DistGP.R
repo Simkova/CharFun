@@ -11,7 +11,8 @@
 #'
 #' @family Algorithm
 #'
-#' @seealso
+#' @seealso For more details see:
+#' \url{https://arxiv.org/pdf/1701.08299.pdf}
 #'
 #' @param cf      function handle for the characteristic function CF
 #' @param x       vector of values from domain of the distribution F, if missing,
@@ -391,8 +392,8 @@ cf2DistGP <-
         corrCDF <- min(cdf)
         cdf <- cdf - corrCDF
       }
-      if (max(cdf) < 1) {
-        corrCDF <- max(cdf)
+      if (max(cdf) > 1) {
+        corrCDF <- max(cdf)-1
         cdf <- cdf - corrCDF
       }
     }
