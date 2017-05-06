@@ -49,8 +49,6 @@ You can download package from
 
 in installe packages in R-studio you chose Package Archive File (.tar.gz).
 
-Or you can chose it from Cran repository
-
 
 Getting started
 ===============
