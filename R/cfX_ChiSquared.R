@@ -1,11 +1,10 @@
-#' @title Characteristic function of Chi-Squared distribution
+#' @title Characteristic function of Noncentral Chi-Squared distribution
 #'
 #' @description
 #' cfX_ChiSquared(t, df, ncp = 0) evaluates the characteristic function cf(t) of
-#' the Noncentral Chi-Squared distribution with the parameter df (degrees of freedom, df > 0)
-#' and npc (non-centrality, npc > 0), i.e.
+#' the Chi-Squared distribution with the parameter df (degrees of freedom, df > 0)
+#' and npc (non-centrality, \eqn{npc \ge 0}), i.e.
 #'
-#' cfX_ChiSquared(t, df) = (1 - 2it )^(-df/2) = cfX_GAMMA(t, df/2, 1/2)
 #' cfX_ChiSquared(t, df, npc) = exp((i*npc*t)/(1 - 2it)) / (1 - 2it)^(df/2)
 #'
 #' @family Continuous Probability distribution

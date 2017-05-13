@@ -29,11 +29,9 @@ In probability theory, a log-normal (or lognormal) distribution is a
 continuous probability distribution of a random variable whose logarithm
 is normally distributed. The lognormal distribution is defined for x in
 (0,+inf) by its PDF/CDF/CF, as follows
- \eqn{pdf(x) = \frac{1}{x\sigma\sqrt{2\pi}}\
-           e^{-\frac{\left(\ln x-\mu\right)^2}{2\sigma^2}},
- cdf(x) = \frac12 + \frac12\,\mathrm{erf}\Big[\frac{\ln x-\mu}
-           {\sqrt{2}\sigma}\Big],
- cf(t)  = \sum_{n=0}^{\infty}\frac{(it)^n}{n!}e^{n\mu+n^2\sigma^2/2}.}
+ \eqn{pdf(x) = 1/(x*sigma*sqrt(2*pi))*exp(-(ln(x)-mu)^2/(2*sigma^2))
+ cdf(x) = 1/2+1/2*erf((ln(x)-mu)/(sqrt(2)*sigma))
+ cf(t)  = sum_0^infinity{(it)^n/n!*exp(n*mu + (n*sigma)^2/2)}.}
 As noted, this representation is asymptotically divergent but sufficient
 for numerical purposes.
 
