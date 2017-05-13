@@ -62,7 +62,7 @@ sigma <- 1
 x <- seq(0, 15, length.out = 101)
 prob <- c(0.9, 0.95, 0.99)
 cf <- function(t) cfX_LogNormal(t, mu, sigma)
-result <- cf2DistGP(cf, x, prob, N = 2^13, SixSigmaRule = 8, xMin = 0)
+result <- cf2DistGP(cf, x, prob, N = 2^10, SixSigmaRule = 8, xMin = 0)
 
 # EXAMPLE3 (PDF/CDF of the compound Poisson-Lognormal distribution)
 mu <- 0

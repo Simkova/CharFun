@@ -13,7 +13,7 @@ plotGraf(cf, t, title = "CF of the mixture of the von Mises distribution")
 
 # EXAMPLE3 (PDF/CDF of the von Mises distribution on (-pi,pi))
 mu <- 0
-kappa <- 1
+kappa <- 5
 cf  <- function(t) cfC_vonMises(t, mu, kappa)
 result <- cf2DistGP(cf, xMin = -pi, xMax = pi)
 angle <- result$x
@@ -39,7 +39,7 @@ kappa2 <- 15
 mu3 <- pi
 kappa3 <- 10
 cf <- function(t) 0.25*cfC_vonMises(t, mu1, kappa1) + 0.25*cfC_vonMises(t, mu2, kappa2) + 0.5*cfC_vonMises(t, mu3, kappa3)
-result <- cf2DistGP(cf, xMin =  -pi, xMax = 2*pi, isCircular = TRUE)
+result <- cf2DistGP(cf, xMin =  0, xMax = 2*pi, isCircular = TRUE)
 angle <- result$x
 radius <- result$pdf
 plotPolar(angle, radius)
