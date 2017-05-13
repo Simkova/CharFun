@@ -9,7 +9,6 @@
 #' random variable X (as e.g. another empirical CF based on observed data of X).
 #'
 #' @family Empirical Probability Distribution
-#' @family Characteristic Function
 #'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Empirical_characteristic_function}

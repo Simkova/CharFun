@@ -6,7 +6,6 @@
 #'
 #' cfX_Exponential(t, lambda) = lambda / (lambda - it)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:

@@ -155,6 +155,7 @@ result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
 
 }
 \seealso{
-
+For more details see:
+\url{https://arxiv.org/pdf/1701.08299.pdf}
 }
 

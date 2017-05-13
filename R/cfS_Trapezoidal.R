@@ -6,7 +6,6 @@
 #' (Trapezoidal distribution with mean = 0 and variance = ???
 #' cfS_Trapezoidal(t, a, c) = (sin(w*at)/(w*at))*(sin((1-w)*at)/((1-w)*at))
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'

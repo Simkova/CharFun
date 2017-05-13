@@ -5,7 +5,6 @@
 #' the Normal distribution with mean = mean and variance = variance: N(mean, variance))
 #' cfX_Normal(t, mean, variance) = exp(imeant -1/2variance^2t^2)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #'
 #' @seealso For more details see WIKIPEDIA:

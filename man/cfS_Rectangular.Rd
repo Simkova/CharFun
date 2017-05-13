@@ -34,39 +34,22 @@ cfS_Rectangular(t, a) = sin(at)/at
  option$N <- 2^10
  option$dx <- 2/pi/xRange
  result <- cf2DistGP(cf, x, prob, option)
+
+ ## EXAMPLE3 (PDF/CDF of the Rectangular distribution on (-1,1))
+ cf <- function(t) cfS_Rectangular(t)
+ x <- seq(-1, 1, length.out = 101)
+ prob <- c(0.9, 0.95, 0.99)
+ result <- cf2DistGP(cf, x, prob, xMin = -1, xMax = 1, N = 2)
 }
 \seealso{
 For more details see WIKIPEDIA:
 \url{https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)}
-
-Other Characteristic Function: \code{\link{cfC_vonMises}},
-  \code{\link{cfE_Empirical}}, \code{\link{cfN_Binomial}},
-  \code{\link{cfN_Delaporte}},
-  \code{\link{cfN_GeneralizedPoisson}},
-  \code{\link{cfN_Geometric}},
-  \code{\link{cfN_Logarithmic}},
-  \code{\link{cfN_NegativeBinomial}},
-  \code{\link{cfN_Poisson}},
-  \code{\link{cfN_PolyaEggenberger}},
-  \code{\link{cfS_Arcsine}}, \code{\link{cfS_Beta}},
-  \code{\link{cfS_Gaussian}}, \code{\link{cfS_StudentT}},
-  \code{\link{cfS_Trapezoidal}},
-  \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
-  \code{\link{cfX_ChiSquared}},
-  \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
-  \code{\link{cfX_InverseGamma}},
-  \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
-  \code{\link{cfX_PearsonV}},
-  \code{\link{cfX_Rectangular}},
-  \code{\link{cfX_Triangular}}
 
 Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
   \code{\link{cfS_Beta}}, \code{\link{cfS_Gaussian}},
   \code{\link{cfS_StudentT}},
   \code{\link{cfS_Trapezoidal}},
   \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
   \code{\link{cfX_ChiSquared}},
   \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
   \code{\link{cfX_InverseGamma}},

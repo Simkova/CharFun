@@ -17,7 +17,6 @@
 #' independent RV with its CF given by cfN(t).
 #'
 #' @family Discrete Probability Distribution
-#' @family Characteristic Function
 #'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Delaporte_distribution}

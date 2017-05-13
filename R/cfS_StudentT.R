@@ -8,7 +8,6 @@
 #' cfS_StudentT(t,df) = besselK(df/2,abs(t)*sqrt(df),1) * exp(-abs(t)*sqrt(df)) *
 #'                      (sqrt(df)*abs(t))^(df/2) / 2^(df/2-1)/gamma(df/2)
 #'
-#' @family Characteristic Function
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'
