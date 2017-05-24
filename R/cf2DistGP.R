@@ -542,7 +542,7 @@ cf2DistGP <-
         xlab = "x",
         ylab = "cdf",
         type = "l",
-        col = "red"
+        col = "blue"
       )
       grid()
     }
