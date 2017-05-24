@@ -2,23 +2,26 @@
 % Please edit documentation in R/cfX_ChiSquared.R
 \name{cfX_ChiSquared}
 \alias{cfX_ChiSquared}
-\title{Characteristic function of Chi-Squared distribution}
+\title{Characteristic function of Noncentral Chi-Squared distribution}
 \usage{
-cfX_ChiSquared(t, df)
+cfX_ChiSquared(t, df, npc)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}
 
-\item{df}{degrees of freedom, df > 0}
+\item{df}{degrees of freedom}
+
+\item{npc}{non-centrality parameter, default value = 0}
 }
 \value{
 characteristic function cf(t) of the CHI-SUQARED distribution
 }
 \description{
-cfX_ChiSquared(t,df) evaluates the characteristic function cf(t) of
-the CHI-SUQARED distribution with the parameter df (degrees of freedom, df > 0),
-i.e.
-cfX_ChiSquared(t, df) = (1 - 2it )^(-df/2) = cfX_GAMMA(t, df/2, 1/2)
+cfX_ChiSquared(t, df, ncp = 0) evaluates the characteristic function cf(t) of
+the Chi-Squared distribution with the parameter df (degrees of freedom, df > 0)
+and npc (non-centrality, \eqn{npc \ge 0}), i.e.
+
+cfX_ChiSquared(t, df, npc) = exp((i*npc*t)/(1 - 2it)) / (1 - 2it)^(df/2)
 }
 \examples{
 ## EXAMPLE1 (CF of the ChiSquared distribution with df = 1)
@@ -45,7 +48,7 @@ cfX_ChiSquared(t, df) = (1 - 2it )^(-df/2) = cfX_GAMMA(t, df/2, 1/2)
 }
 \seealso{
 For more details see WIKIPEDIA:
-\url{https://en.wikipedia.org/wiki/Chi-squared_distribution}
+\url{https://en.wikipedia.org/wiki/Noncentral_chi-squared_distribution}
 
 Other Characteristic Function: \code{\link{cfC_vonMises}},
   \code{\link{cfE_Empirical}}, \code{\link{cfN_Binomial}},
@@ -62,7 +65,6 @@ Other Characteristic Function: \code{\link{cfC_vonMises}},
   \code{\link{cfS_StudentT}},
   \code{\link{cfS_Trapezoidal}},
   \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
   \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
   \code{\link{cfX_InverseGamma}},
   \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
@@ -76,7 +78,6 @@ Other Continuous Probability distribution: \code{\link{cfS_Arcsine}},
   \code{\link{cfS_StudentT}},
   \code{\link{cfS_Trapezoidal}},
   \code{\link{cfS_Triangular}}, \code{\link{cfX_Beta}},
-  \code{\link{cfX_ChiSquaredNC}},
   \code{\link{cfX_Exponential}}, \code{\link{cfX_Gamma}},
   \code{\link{cfX_InverseGamma}},
   \code{\link{cfX_LogNormal}}, \code{\link{cfX_Normal}},
