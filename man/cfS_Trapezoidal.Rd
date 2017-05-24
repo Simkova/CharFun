@@ -14,7 +14,7 @@ cfX_Triangular(t, a, c)
 \item{c}{number, (\eqn{0 \le c \le a}), default value c = 1/3}
 }
 \value{
-characteristic function cf(t) of the Triangular distribution on the interval (a, b) with mode c
+characteristic function cf(t) of the Trapezoidal distribution on the interval (-a, a) with mode on the interval (-c, c)
 }
 \description{
 cfS_Trapezoidal(t, a, c) (a > 0, c > 0, \eqn{c \le a}) evaluates the characteristic function cf(t) of

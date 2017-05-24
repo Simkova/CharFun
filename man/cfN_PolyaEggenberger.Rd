@@ -27,7 +27,7 @@ Polya-Eggenberger distribution with the parameters a (a real), b (b real), and m
 cfN_PolyaEggenberger(t, a, b, m) = 2F1(-m,a,a+b,1-e^(1i*t))
 where 2F1 denotes the Gauss hypergeometric function.
 
-cfN_PolyaEggenberger(t, a, b, m) evaluates the compound characteristic function
+cfN_PolyaEggenberger(t, a, b, m, cfx) evaluates the compound characteristic function
 cf(t) = cfN_PolyaEggenberge(-1i*log(cfX(t)), a, b, m), where cfX is function
 handle of the characteristic function cfX(t) of a continuous distribution
 and/or random variable X.

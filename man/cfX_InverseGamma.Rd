@@ -21,7 +21,7 @@ cfX_InverseGamma(t,alpha,beta) evaluates the characteristic function cf(t) of
 the Inverse Gamma distribution with the parameters alpha (shape, alpha > 0) and
 beta (rate, beta > 0), i.e.
 
-cfX_InverseGamma(t, alpha, beta) = (1 - it/beta)^(-alpha)
+cfX_InverseGamma(t, alpha, beta) = (2(-i*beta*t)^(alpha/2))/(gamma(alpha))*(besselK(sqrt(-4i beta t))
 }
 \examples{
 ## EXAMPLE1 (CF of the InverseGamma distribution with alpha = 2, beta = 2)
