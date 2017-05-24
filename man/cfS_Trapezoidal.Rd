@@ -4,7 +4,7 @@
 \alias{cfS_Trapezoidal}
 \title{Characteristic function of Trapezoidal distribution}
 \usage{
-cfX_Triangular(t, a, c)
+cfS_Trapezoidal(t, a = 1, c = 1/3)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

@@ -16,7 +16,6 @@
 #' @param b number, default value b = 1
 #' @param c number, (\eqn{a \le c \le b}), default value c = 0
 #' @return characteristic function cf(t) of the Triangular distribution on the interval (a, b) with mode c
-#' @usage cfX_Triangular(t, a, b, c)
 #'
 #' @example Examples/example_cfX_Triangular.R
 #'

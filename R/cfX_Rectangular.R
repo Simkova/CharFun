@@ -14,8 +14,8 @@
 #' @param t numerical values (number, vector...)
 #' @param a number, default value a = -1
 #' @param b number, default value b = 1
+#'
 #' @return characteristic function cf(t) of the Rectangular distribution on the interval (a, b)
-#' @usage cfX_Rectangular(t, a, b)
 #'
 #' @example Examples/example_cfX_Rectangular.R
 #'

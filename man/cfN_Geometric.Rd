@@ -4,8 +4,7 @@
 \alias{cfN_Geometric}
 \title{Characteristic function of Geometric distribution}
 \usage{
-cfN_Geometric(t, p, type)
-cfN_Geometric(t, p, type, cfX)
+cfN_Geometric(t, p = 1/2, type = "standard", cfX)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

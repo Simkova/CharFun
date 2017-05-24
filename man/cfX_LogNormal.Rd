@@ -4,7 +4,7 @@
 \alias{cfX_LogNormal}
 \title{Characteristic function of Lognormal distribution}
 \usage{
-cfX_LogNormal(t, mu, sigma, tol)
+cfX_LogNormal(t, mu = 0, sigma = 1, tol = 1e-06)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

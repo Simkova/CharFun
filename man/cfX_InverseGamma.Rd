@@ -4,7 +4,7 @@
 \alias{cfX_InverseGamma}
 \title{Characteristic function of Inverse Gamma distribution}
 \usage{
-cfX_InverseGamma(t, alpha, beta)
+cfX_InverseGamma(t, alpha = 1, beta = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

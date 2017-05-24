@@ -38,8 +38,6 @@
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Geometric distribution with p success probability
-#' @usage cfN_Geometric(t, p, type)
-#' cfN_Geometric(t, p, type, cfX)
 #'
 #' @example Examples/example_cfN_Geometric.R
 #'

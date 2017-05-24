@@ -4,7 +4,6 @@
 \alias{cfE_Empirical}
 \title{Characteristic function of Empirical distribution}
 \usage{
-cfE_Empirical(t, data)
 cfE_Empirical(t, data, cfX)
 }
 \arguments{

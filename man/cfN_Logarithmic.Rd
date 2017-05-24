@@ -4,8 +4,7 @@
 \alias{cfN_Logarithmic}
 \title{Characteristic function of Logarithmic distribution}
 \usage{
-cfN_Logarithmic(t, p)
-cfN_Logarithmic(t, p, cfX)
+cfN_Logarithmic(t, p = 0.5, cfX)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

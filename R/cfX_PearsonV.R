@@ -18,7 +18,6 @@
 #' @param alpha shape, alpha > 0, default value alpha = 1
 #' @param beta scale > 0, default value beta = 1
 #' @return characteristic function cf(t) of the Gamma distribution
-#' @usage cfX_PearsonV(t, alpha, beta)
 #'
 #' @example Examples/example_cfX_PearsonV.R
 #'

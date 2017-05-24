@@ -4,8 +4,7 @@
 \alias{cfN_Poisson}
 \title{Characteristic function of Poisson distribution}
 \usage{
-cfN_Poisson(t, lambda)
-cfN_Poisson(t, lambda, cfX)
+cfN_Poisson(t, lambda = 1, cfX)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

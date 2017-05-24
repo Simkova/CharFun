@@ -4,7 +4,7 @@
 \alias{cfX_Normal}
 \title{Characteristic function of Normal distribution}
 \usage{
-cfX_Normal(t, mean, variance)
+cfX_Normal(t, mean = 0, variance = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

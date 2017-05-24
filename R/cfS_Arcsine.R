@@ -14,8 +14,8 @@
 #'
 
 #' @param t numerical values (number, vector...)
+#'
 #' @return characteristic function cf(t) of the Arcsine distribution
-#' @usage cfS_Arcsine(t)
 #'
 #' @example Examples/example_cfS_Arcsine.R
 #'

@@ -14,7 +14,6 @@
 #' @param mean real number, mean or expextation of the distribution, default value mean = 0
 #' @param variance real number, standard deviation, variance > 0, default value variance = 1
 #' @return characteristic function cf(t) of the normal distribution
-#' @usage cfX_Normal(t, mean, variance)
 #'
 #' @example Examples/example_cfX_Normal.R
 #'

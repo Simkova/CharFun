@@ -83,9 +83,6 @@
 #'    \item{result$option}{<- option}
 #'    \item{result$tictoc}{<- toc}
 #'
-#' @usage result <- cf2DistGP(cf)
-#' result <- cf2DistGP(cf, x, prob, options)
-#'
 #' @note
 #' If options.DIST is provided, then cf2DistGP evaluates CDF/PDF based on
 #' this information only (it is useful, e.g., for subsequent evaluation of

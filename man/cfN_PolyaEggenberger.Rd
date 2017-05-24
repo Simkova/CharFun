@@ -4,7 +4,6 @@
 \alias{cfN_PolyaEggenberger}
 \title{Characteristic function of Polya-Eggenberger}
 \usage{
-cfN_PolyaEggenberger(t, a, b, m)
 cfN_PolyaEggenberger(t, a, b, m, cfX)
 }
 \arguments{

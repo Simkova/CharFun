@@ -42,7 +42,6 @@
 #' @param tol tolerance, default value tol = 1e-6
 #'
 #' @return characteristic function cf(t) of the Lognormal distribution computed for real (vector)
-#' @usage cfX_LogNormal(t, mu, sigma, tol)
 #'
 #' @example Examples/example_cfX_LogNormal.R
 #'

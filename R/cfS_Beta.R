@@ -20,9 +20,10 @@
 #'
 
 #' @param t numerical values (number, vector...)
+#'
 #' @param theta default value theta = 1
+#'
 #' @return characteristic function cf(t) of the Beta distribution
-#' @usage cfX_Beta(t, theta)
 #'
 #' @example Examples/example_cfX_Beta.R
 #'

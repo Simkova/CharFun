@@ -4,8 +4,7 @@
 \alias{cfN_NegativeBinomial}
 \title{Characteristic function of Negative-Binomial distribution}
 \usage{
-cfN_NegativeBinomial(t, n, p)
-cfN_NegativeBinomial(t, n, p, cfX)
+cfN_NegativeBinomial(t, r = 10, p = 0.5, cfX)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

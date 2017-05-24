@@ -4,7 +4,7 @@
 \alias{cfX_PearsonV}
 \title{Characteristic function of Pearson type V distribution}
 \usage{
-cfX_PearsonV(t, alpha, beta)
+cfX_PearsonV(t, alpha = 1, beta = 1)
 }
 \arguments{
 \item{t}{numerical real values (number, vector...)}

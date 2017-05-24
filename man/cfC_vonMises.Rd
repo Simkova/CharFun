@@ -4,7 +4,7 @@
 \alias{cfC_vonMises}
 \title{Characteristic function of von Mises distribution}
 \usage{
-cfC_vonMises(t, mu, kappa)
+cfC_vonMises(t, mu = 0, kappa = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

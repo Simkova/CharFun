@@ -4,7 +4,7 @@
 \alias{cfX_Gamma}
 \title{Characteristic function of Gamma distribution}
 \usage{
-cfX_Gamma(t, alpha, beta)
+cfX_Gamma(t, alpha = 1, beta = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

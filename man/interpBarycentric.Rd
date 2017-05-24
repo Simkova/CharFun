@@ -4,7 +4,7 @@
 \alias{interpBarycentric}
 \title{Barycentric Interpolation}
 \usage{
-funNew <- interpBarycentric(x, fun, xNew)
+interpBarycentric(x, fun, xNew, isChebPts = TRUE)
 }
 \arguments{
 \item{x}{points in which is fun given (for more accuracy use chebpoints)}

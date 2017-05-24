@@ -4,8 +4,7 @@
 \alias{cfN_GeneralizedPoisson}
 \title{Characteristic function of Generalized Poisson distribution}
 \usage{
-cfN_GeneralizedPoisson(t, a, p)
-cfN_GeneralizedPoisson(t, a, p, cfX)
+cfN_GeneralizedPoisson(t, a, p = 0.5, cfX)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

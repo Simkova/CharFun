@@ -20,7 +20,6 @@
 #' @param alpha shape, aplha > 0, default value aplha = 1
 #' @param beta shape, beta > 0, default value beta = 1
 #' @return characteristic function cf(t) of the Beta distribution
-#' @usage cfX_Beta(t, alpha, beta)
 #'
 #' @example Examples/example_cfX_Beta.R
 #'

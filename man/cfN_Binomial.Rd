@@ -4,8 +4,7 @@
 \alias{cfN_Binomial}
 \title{Characteristic function of Binomial distribution}
 \usage{
-cfN_Binomial(t, n, p)
-cfN_Binomial(t, n, p, cfX)
+cfN_Binomial(t, n = 10, p = 1/2, cfX)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

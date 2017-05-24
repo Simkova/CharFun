@@ -22,8 +22,8 @@
 #' @param z numerical values (number, vector...)
 #' @param a single value
 #' @param b single value
+#'
 #' @return hypergeometric function 1F1(a,b,z)
-#' @usage hypergeom1F1(t, a, b)
 #'
 #' @export
 #'

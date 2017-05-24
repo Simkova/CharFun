@@ -15,7 +15,6 @@
 #' @param t numerical values (number, vector...)
 #' @param lambda rate, lambda > 0, default value lambda = 1
 #' @return characteristic function cf(t) of the Exponential distribution
-#' @usage cfX_Exponential(t, lambda)
 #'
 #' @example Examples/example_cfX_Exponential.R
 #'

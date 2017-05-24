@@ -4,7 +4,7 @@
 \alias{cfS_Triangular}
 \title{Characteristic function of Triangular distribution}
 \usage{
-cfX_Triangular(t, a)
+cfS_Triangular(t, a = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

@@ -18,7 +18,6 @@
 #' @param kappa > 0
 #'
 #' @return characteristic function cf(t) of the von Mises distribution with the parameters mu and kappa > 0
-#' @usage cfC_vonMises(t, mu, kappa)
 #'
 #' @example Examples/example_cfC_vonMises.R
 #'

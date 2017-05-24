@@ -29,8 +29,6 @@
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Poisson distribution with rate lambda
-#' @usage cfN_GeneralizedPoisson(t, a, p)
-#' cfN_GeneralizedPoisson(t, a, p, cfX)
 #'
 #' @example Examples/example_cfN_GeneralizedPoisson.R
 #'

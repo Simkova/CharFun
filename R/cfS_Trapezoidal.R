@@ -15,8 +15,8 @@
 #' @param t numerical values (number, vector...)
 #' @param a number, a > 0, default value a = 1
 #' @param c number, (\eqn{0 \le c \le a}), default value c = 1/3
+#'
 #' @return characteristic function cf(t) of the Triangular distribution on the interval (a, b) with mode c
-#' @usage cfX_Triangular(t, a, c)
 #'
 #' @example Examples/example_cfS_Trapezoidal.R
 #'

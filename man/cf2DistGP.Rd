@@ -4,8 +4,8 @@
 \alias{cf2DistGP}
 \title{Evaluating CDF/PDF/QF from CF of a continous distribution F by using the Gil-Pelaez inversion formulae.}
 \usage{
-result <- cf2DistGP(cf)
-result <- cf2DistGP(cf, x, prob, options)
+cf2DistGP(cf, x, prob, option, isCompound, isCircular, N, SixSigmaRule, xMin,
+  xMax, isPlot)
 }
 \arguments{
 \item{cf}{function handle for the characteristic function CF}

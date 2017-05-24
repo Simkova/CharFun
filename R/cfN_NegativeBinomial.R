@@ -27,8 +27,6 @@
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Negative-Binomial distribution with n trials and p success probability
-#' @usage cfN_NegativeBinomial(t, n, p)
-#' cfN_NegativeBinomial(t, n, p, cfX)
 #'
 #' @example Examples/example_cfN_NegativeBinomial.R
 #'

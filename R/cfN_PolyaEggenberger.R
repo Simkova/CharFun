@@ -28,8 +28,6 @@
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Polya-Eggenberger distribution
-#' @usage cfN_PolyaEggenberger(t, a, b, m)
-#' cfN_PolyaEggenberger(t, a, b, m, cfX)
 #'
 #' @example Examples/example_cfN_PolyaEggenberger.R
 #'

@@ -5,7 +5,6 @@
 \title{Characteristic function of Delaporte distribution}
 \usage{
 cfN_Delaporte(t, a, b, c, cfX)
-cfN_Delaporte(t, a, b, c)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

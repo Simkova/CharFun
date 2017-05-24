@@ -17,7 +17,6 @@
 #' @param df degrees of freedom
 #' @param npc non-centrality parameter, default value = 0
 #' @return characteristic function cf(t) of the CHI-SUQARED distribution
-#' @usage cfX_ChiSquared(t, df, npc)
 #'
 #' @example Examples/example_cfX_ChiSquared.R
 #'

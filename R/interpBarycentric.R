@@ -18,8 +18,6 @@
 #'
 #' @return function fun evaluated in points xNew
 #'
-#' @usage funNew <- interpBarycentric(x, fun, xNew)
-#'
 #' @export
 interpBarycentric <- function(x, fun, xNew, isChebPts = TRUE) {
   if (missing(xNew)) {xNew <- seq(min(x), max(x))}

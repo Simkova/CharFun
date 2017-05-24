@@ -4,7 +4,7 @@
 \alias{cfX_Beta}
 \title{Characteristic function of Beta distribution}
 \usage{
-cfX_Beta(t, alpha, beta)
+cfX_Beta(t, alpha = 1, beta = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

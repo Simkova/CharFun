@@ -4,7 +4,7 @@
 \alias{hypergeom1F1}
 \title{Confluent hypergeometric function}
 \usage{
-hypergeom1F1(t, a, b)
+hypergeom1F1(z, a, b)
 }
 \arguments{
 \item{z}{numerical values (number, vector...)}

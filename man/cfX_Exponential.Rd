@@ -4,7 +4,7 @@
 \alias{cfX_Exponential}
 \title{Characteristic function of Exponential distribution}
 \usage{
-cfX_Exponential(t, lambda)
+cfX_Exponential(t, lambda = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

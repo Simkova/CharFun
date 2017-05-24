@@ -4,7 +4,7 @@
 \alias{cfS_Rectangular}
 \title{Characteristic function of Rectangular distribution}
 \usage{
-cfX_Rectangular(t, a)
+cfS_Rectangular(t, a = 1)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

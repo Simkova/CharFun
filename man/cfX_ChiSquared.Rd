@@ -4,7 +4,7 @@
 \alias{cfX_ChiSquared}
 \title{Characteristic function of Noncentral Chi-Squared distribution}
 \usage{
-cfX_ChiSquared(t, df, npc)
+cfX_ChiSquared(t, df, npc = 0)
 }
 \arguments{
 \item{t}{numerical values (number, vector...)}

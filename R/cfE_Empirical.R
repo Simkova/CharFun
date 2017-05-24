@@ -18,8 +18,6 @@
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Empirical distribution, based on the observed data
-#' @usage cfE_Empirical(t, data)
-#'cfE_Empirical(t, data, cfX)
 #'
 #' @example Examples/example_cfE_Empirical.R
 #'

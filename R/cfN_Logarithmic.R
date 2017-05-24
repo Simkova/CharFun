@@ -26,8 +26,6 @@
 #' @param cfX function
 #'
 #' @return characteristic function cf(t) of the Logarithmic distribution p success probability
-#' @usage cfN_Logarithmic(t, p)
-#' cfN_Logarithmic(t, p, cfX)
 #'
 #' @example Examples/example_cfN_Logarithmic.R
 #'
