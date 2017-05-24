@@ -34,5 +34,5 @@ plotGraf(cf, t, title = "Compound Empirical CF")
 
 x <- seq(0, 1000, length.out = 501)
 prob <- c(0.9, 0.95)
-cf2DistGP(cf, x, prob, N = 2^12, SixSigmaRule = 10)
+rusult <- cf2DistGP(cf, x, prob, N = 2^12, SixSigmaRule = 10)
 
