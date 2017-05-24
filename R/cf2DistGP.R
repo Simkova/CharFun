@@ -234,7 +234,7 @@ cf2DistGP <-
     # for x > 0. Set cdf_original(x) =  const + cdf_new(x) * (1-const).
 
 
-    const <- abs(Re(cf(1e+30)))
+    const <- Re(cf(1e+30))
     if (option$isCompound) {
       cfOld <- cf
       if (const > 1e-13) {
@@ -257,7 +257,7 @@ cf2DistGP <-
       t <- (1:N) * dt
       xStd <- NaN
     } else {
-      N <- 2 * option$N
+      N <- option$N
       dt <- option$dt
       T <- option$T
       xMin <- option$xMin
@@ -541,7 +541,7 @@ cf2DistGP <-
         xlab = "x",
         ylab = "cdf",
         type = "l",
-        col = "red"
+        col = "blue"
       )
       grid()
     }
