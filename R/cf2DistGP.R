@@ -276,15 +276,15 @@ cf2DistGP <-
           xMean <- Arg(cf(1))
         } else {
           xMean <-
-            Re((-cft[2] + 8 * cft[1] - 8 * Conj(cft[1]) + Conj(cft[2])) / (1i * 12 * tolDiff))
+            (-3*Im(cft[4]) + 32*Im(cft[3]) - 168*Im(cft[2]) + 672*Im(cft[1])) / (420 * tolDiff)
         }
       }
       if (is.null(xStd)) {
         if (option$isCircular) {
           xStd <- sqrt(-2 * log(abs(cf(1))))
         } else {
-          xM2   = (205/72 - 16*Re(cft[1])/5 + 2*Re(cft[2])/5 - 16*Re(cft[3])/315 + 2*Re(cft[4])/560) / tolDiff^2
-          xStd  = sqrt(xM2 - xMean^2)
+          xM2   = (-9*Re(cft[4]) + 128 * Re(cft[3]) - 1008 * Re(cft[2]) + 8064 * Re(cft[1]) - 7175) / (2520 * tolDiff^2)
+          xStd  = sqrt(-xM2 - xMean^2)
         }
       }
       if (is.finite(xMin) && is.finite(xMax)) {
