@@ -19,7 +19,6 @@
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Beta_distribution}
 #'
-
 #' @param t numerical values (number, vector...)
 #' @param theta default value theta = 1
 #' @return characteristic function cf(t) of the Beta distribution
