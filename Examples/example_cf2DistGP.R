@@ -20,5 +20,3 @@ cf <- function(t) cfN_Poisson(t, lambda1, cfX)
 x <- seq(0, 8, length.out = 101)
 prob <- c(0.9, 0.95, 0.99)
 result <- cf2DistGP(cf, x, prob, isCompound = TRUE)
-
-
