@@ -5,7 +5,7 @@
 #' the Inverse Gamma distribution with the parameters alpha (shape, alpha > 0) and
 #' beta (rate, beta > 0), i.e.
 #'
-#' cfX_InverseGamma(t, alpha, beta) = (1 - it/beta)^(-alpha)
+#' cfX_InverseGamma(t, alpha, beta) = (2(-i*beta*t)^(alpha/2))/(gamma(alpha))*(besselK(sqrt(-4i beta t))
 #'
 #' @family Characteristic Function
 #' @family Continuous Probability distribution
