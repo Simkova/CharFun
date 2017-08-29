@@ -39,7 +39,7 @@
 #'
 #' @return characteristic function cf(t) of the Geometric distribution with p success probability
 #'
-#' @example Examples/example_cfN_Geometric.R
+#' @example R/Examples/example_cfN_Geometric.R
 #'
 #' @export
 

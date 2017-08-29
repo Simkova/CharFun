@@ -18,8 +18,6 @@
 #'
 #' @family Discrete Probability Distribution
 #'
-#' @seealso
-#' \url{}
 #'
 #' @param t numerical values (number, vector...)
 #' @param a real number
@@ -29,7 +27,7 @@
 #'
 #' @return characteristic function cf(t) of the Polya-Eggenberger distribution
 #'
-#' @example Examples/example_cfN_PolyaEggenberger.R
+#' @example R/Examples/example_cfN_PolyaEggenberger.R
 #'
 #' @export
 #'

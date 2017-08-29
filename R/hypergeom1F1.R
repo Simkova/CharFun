@@ -27,7 +27,7 @@
 #'
 #' @export
 #'
-#' @example Examples/example_hypergeom1F1.R
+#' @example R/Examples/example_hypergeom1F1.R
 #'
 hypergeom1F1 <- function(z, a, b) {
   sz <- dim(z)
@@ -50,7 +50,7 @@ cchg <- function (z, a, b) {
   } else if (a == 0 || z == 0) {
     chg <- 1
   } else if (a == -1) {
-    chg <- 1 - z. / b
+    chg <- 1 - z / b
   } else if (a == b) {
     chg <- exp(z)
   } else if (a - b == 1) {

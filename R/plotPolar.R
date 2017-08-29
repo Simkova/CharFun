@@ -1,5 +1,7 @@
 #' Title
 #'
+#' @importFrom graphics plot lines par
+#'
 #' @param angle angle
 #' @param radius amplitude
 #' @param title an overall title for the plot
@@ -7,8 +9,6 @@
 #' @param color color
 #'
 #' @export
-#'
-#' @examples
 #'
 #'
 plotPolar <- function(angle, radius, title = "", type = "l", color = "blue") {

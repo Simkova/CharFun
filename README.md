@@ -1,7 +1,7 @@
-# CharFun: The Characteristic Functions Toolbox
-MATLAB repository of characteristic functions and tools for their combinations and numerical inversion.
+# CharFun: The Characteristic Functions Package
+R repository of characteristic functions and tools for their combinations and numerical inversion.
 
-For the R version of the toolbox see the CharFun package development available at
+For the R version of the package see the CharFun package development available at
 
 - https://github.com/Simkova/CharFun
 
@@ -13,10 +13,10 @@ For current status of the MATLAB toolbox (not an identical clone) see the CharFu
 About
 =====
 
-The Characteristic Functions Toolbox (CharFun) consists of a set of algorithms for evaluating selected characteristic funcions
+The Characteristic Functions Package (CharFun) consists of a set of algorithms for evaluating selected characteristic funcions
 and algorithms for numerical inversion of the (combined and/or compound) characteristic functions, used to evaluate the probability density function (PDF) and the cumulative distribution function (CDF).
                                                                               
-The toolbox includes inversion algorithm, including those based on simple trapezoidal rule for computing the integrals defined by the Gil-Pelaez formulae, and/or by using the FFT algorithm for computing the Fourier transform integrals.
+The package includes inversion algorithm, including those based on simple trapezoidal rule for computing the integrals defined by the Gil-Pelaez formulae, and/or by using the FFT algorithm for computing the Fourier transform integrals.
                                                                        
 Installation and requirements
 =============================
@@ -65,4 +65,4 @@ To get a taste of what computing with CharFun is like, type
 License
 =======
 
-See `LICENSE.txt` for CharFunTool licensing information.
+See `LICENSE` for CharFun licensing information.

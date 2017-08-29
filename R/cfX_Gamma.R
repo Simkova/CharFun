@@ -17,7 +17,7 @@
 #' @param beta rate > 0, default value beta = 1
 #' @return characteristic function cf(t) of the Gamma distribution
 #'
-#' @example Examples/example_cfX_Gamma.R
+#' @example R/Examples/example_cfX_Gamma.R
 #'
 #' @export
 #'

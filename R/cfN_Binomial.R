@@ -28,7 +28,7 @@
 #'
 #' @return characteristic function cf(t) of the Binomial distribution with n trials and p success probability
 #'
-#' @example Examples/example_cfN_Binomial.R
+#' @example R/Examples/example_cfN_Binomial.R
 #'
 #' @export
 

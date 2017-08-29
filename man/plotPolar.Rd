@@ -20,8 +20,4 @@ plotPolar(angle, radius, title = "", type = "l", color = "blue")
 \description{
 Title
 }
-\examples{
-
-
-}
 

@@ -21,7 +21,7 @@
 #' @param beta shape, beta > 0, default value beta = 1
 #' @return characteristic function cf(t) of the Beta distribution
 #'
-#' @example Examples/example_cfX_Beta.R
+#' @example R/Examples/example_cfX_Beta.R
 #'
 #' @export
 #'

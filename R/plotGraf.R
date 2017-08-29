@@ -3,6 +3,8 @@
 #' @description
 #' plotGraf(f, x, xmin, xmax) plots graf of complex function f in real arguments x or in range [xmin, xmax] with step dx
 #'
+#' @importFrom graphics plot lines legend grid
+#'
 #' @param f function
 #' @param x numerical values (number or vector)
 #' @param title an overall title for the plot

@@ -11,6 +11,8 @@
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'
+#' @importFrom Bessel BesselK
+#'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Student's_t-distribution}
 #'
@@ -21,7 +23,7 @@
 #'
 #' @return characteristic function cf(t) of the Student's t-distribution
 #'
-#' @example Examples/example_cfS_StudentT.R
+#' @example R/Examples/example_cfS_StudentT.R
 #'
 #' @export
 #'

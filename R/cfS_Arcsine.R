@@ -9,6 +9,8 @@
 #' @family Continuous Probability distribution
 #' @family Symetric Probability distribution
 #'
+#' @importFrom Bessel BesselJ
+#'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Arcsine_distribution}
 #'
@@ -17,7 +19,7 @@
 #'
 #' @return characteristic function cf(t) of the Arcsine distribution
 #'
-#' @example Examples/example_cfS_Arcsine.R
+#' @example R/Examples/example_cfS_Arcsine.R
 #'
 #' @export
 #'

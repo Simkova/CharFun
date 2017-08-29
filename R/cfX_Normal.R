@@ -15,7 +15,7 @@
 #' @param variance real number, standard deviation, variance > 0, default value variance = 1
 #' @return characteristic function cf(t) of the normal distribution
 #'
-#' @example Examples/example_cfX_Normal.R
+#' @example R/Examples/example_cfX_Normal.R
 #'
 #' @export
 #'

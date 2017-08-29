@@ -18,7 +18,7 @@
 #' @param npc non-centrality parameter, default value = 0
 #' @return characteristic function cf(t) of the CHI-SUQARED distribution
 #'
-#' @example Examples/example_cfX_ChiSquared.R
+#' @example R/Examples/example_cfX_ChiSquared.R
 #'
 #' @export
 #'

@@ -15,6 +15,8 @@
 #' @family Continuous Symetric distribution
 #' @family Continuous Probability distribution
 #'
+#' @importFrom Bessel BesselJ
+#'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Beta_distribution}
 #'
@@ -25,7 +27,7 @@
 #'
 #' @return characteristic function cf(t) of the Beta distribution
 #'
-#' @example Examples/example_cfX_Beta.R
+#' @example R/Examples/example_cfX_Beta.R
 #'
 #' @export
 #'

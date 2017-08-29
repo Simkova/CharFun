@@ -9,6 +9,8 @@
 #'
 #' @family Continuous Probability distribution
 #'
+#' @importFrom Bessel BesselK
+#'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Inverse-gamma_distribution}
 #'
@@ -17,7 +19,7 @@
 #' @param beta rate > 0, default value beta = 1
 #' @return characteristic function cf(t) of the Inverse Gamma distribution
 #'
-#' @example Examples/example_cfX_InverseGamma.R
+#' @example R/Examples/example_cfX_InverseGamma.R
 #'
 #' @export
 #'

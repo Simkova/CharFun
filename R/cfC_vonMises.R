@@ -10,6 +10,8 @@
 #'
 #' @family Circular Probability Distribution
 #'
+#' @importFrom Bessel BesselI
+#'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Von_Mises_distribution}
 #'
@@ -19,7 +21,7 @@
 #'
 #' @return characteristic function cf(t) of the von Mises distribution with the parameters mu and kappa > 0
 #'
-#' @example Examples/example_cfC_vonMises.R
+#' @example R/Examples/example_cfC_vonMises.R
 #'
 #' @export
 

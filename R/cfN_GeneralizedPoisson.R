@@ -30,7 +30,7 @@
 #'
 #' @return characteristic function cf(t) of the Poisson distribution with rate lambda
 #'
-#' @example Examples/example_cfN_GeneralizedPoisson.R
+#' @example R/Examples/example_cfN_GeneralizedPoisson.R
 #'
 #' @export
 

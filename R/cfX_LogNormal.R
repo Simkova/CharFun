@@ -6,6 +6,8 @@
 #' computed for real (vector) argument t, i.e.
 #' cf(t) = cfX_LogNormal(t,mu,sigma);
 #'
+#' @importFrom stats integrate
+#'
 #' @details
 #' In probability theory, a log-normal (or lognormal) distribution is a
 #' continuous probability distribution of a random variable whose logarithm
@@ -43,7 +45,7 @@
 #'
 #' @return characteristic function cf(t) of the Lognormal distribution computed for real (vector)
 #'
-#' @example Examples/example_cfX_LogNormal.R
+#' @example R/Examples/example_cfX_LogNormal.R
 #'
 #' @export
 

@@ -11,6 +11,9 @@
 #'
 #' @family Algorithm
 #'
+#' @importFrom stats runif
+#' @importFrom graphics plot grid
+#'
 #' @seealso For more details see:
 #' \url{https://arxiv.org/pdf/1701.08299.pdf}
 #'
@@ -118,7 +121,7 @@
 #' violated, and the method should be improved (e.g. by selecting larger N
 #' or considering other more sofisticated algorithm - not considered here).
 #'
-#' @example Examples/example_cf2DistGP.R
+#' @example R/Examples/example_cf2DistGP.R
 #' @export
 #'
 #'
@@ -475,7 +478,7 @@ cf2DistGP <-
       PDF <- function(xNew) pmax(0, interpBarycentric(x[id], pdf[id],xNew))
 
       id <- is.finite(cdf)
-      CDF <- function(xNew) pmax(0, pmin(1, interpBarycentric(x[i]), cdf[id], xNew))
+      CDF <- function(xNew) pmax(0, pmin(1, interpBarycentric(x[id]), cdf[id], xNew))
 
       QF <- function(prob) interpBarycentric(cdf[id], x[id], prob)
 

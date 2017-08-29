@@ -18,7 +18,7 @@
 #'
 #' @return characteristic function cf(t) of the Triangular distribution on the interval (a, b) with mode c
 #'
-#' @example Examples/example_cfS_Trapezoidal.R
+#' @example R/Examples/example_cfS_Trapezoidal.R
 #'
 #' @export
 #'

@@ -27,7 +27,7 @@
 #'
 #' @return characteristic function cf(t) of the Logarithmic distribution p success probability
 #'
-#' @example Examples/example_cfN_Logarithmic.R
+#' @example R/Examples/example_cfN_Logarithmic.R
 #'
 #' @export
 #'

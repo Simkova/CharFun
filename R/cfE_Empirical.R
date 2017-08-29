@@ -19,7 +19,7 @@
 #'
 #' @return characteristic function cf(t) of the Empirical distribution, based on the observed data
 #'
-#' @example Examples/example_cfE_Empirical.R
+#' @example R/Examples/example_cfE_Empirical.R
 #'
 #' @export
 

@@ -29,7 +29,7 @@
 #'
 #' @return characteristic function cf(t) of the Delaporte distribution with a and b variable means and c fixed mean
 #'
-#' @example Examples/example_cfN_Delaporte.R
+#' @example R/Examples/example_cfN_Delaporte.R
 #'
 #' @export
 #'

@@ -10,6 +10,8 @@
 #'
 #' @family Continuous Probability distribution
 #'
+#' @importFrom Bessel BesselK
+#'
 #' @seealso For more details see WIKIPEDIA:
 #' \url{https://en.wikipedia.org/wiki/Pearson_distribution}
 #'
@@ -19,7 +21,7 @@
 #' @param beta scale > 0, default value beta = 1
 #' @return characteristic function cf(t) of the Gamma distribution
 #'
-#' @example Examples/example_cfX_PearsonV.R
+#' @example R/Examples/example_cfX_PearsonV.R
 #'
 #' @export
 #'
